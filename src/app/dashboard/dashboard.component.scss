@@ -1,0 +1,41 @@
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.full-width {
+  width: 100%;
+}
+/*.example-full-width2 {
+  width: 100%;
+  min-width: 350px;
+  max-width: 500px;
+}*/
+.titulo {
+  color: white;
+  text-align: center;
+  background-color: rgb(139, 33, 49);
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 24pt;
+}
+.combo_box {
+  margin-left: 25px;
+  margin-right: 50px;
+  min-width: 100px;
+  max-width: 170px;
+  width: 100%;
+  float: left;
+}
+.combo_box_b {
+  margin-left: 25px;
+  margin-right: 50px;
+  min-width: 100px;
+  max-width: 350px;
+  width: 100%;
+  float: left;
+}

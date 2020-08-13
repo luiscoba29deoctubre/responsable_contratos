@@ -1,0 +1,37 @@
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Parameter } from "../models/parameter";
+
+@Injectable({
+  providedIn: "root",
+})
+export class ApiService {
+  private apiUrl = "http://localhost:3000/responsable-api/v1"; // URL to web api del servidor
+
+  constructor(private http: HttpClient) {}
+
+  public getCountry(): Observable<any> {
+    return this.http.get<Parameter>(this.apiUrl + "/parameters/getCountries");
+  }
+
+  public getAllParameters(): Observable<any> {
+    return this.http.get<Parameter>(
+      this.apiUrl + "/parameters/getAllParameters"
+    );
+  }
+
+  public putSaveDataParameters(
+    dataParameters: any[],
+    nameDataParameter: string
+  ): Observable<any> {
+    nameDataParameter =
+      nameDataParameter.charAt(0).toLowerCase() + nameDataParameter.slice(1); // ponemos la primera letra en Mayuscula
+    nameDataParameter = nameDataParameter.replace(" ", "_");
+
+    return this.http.put<any>( // aqui estamos enviando el un parametro y el body al mismo tiempo
+      `${this.apiUrl}/parameters/putSaveOrUpdateDataParameters/${nameDataParameter}`,
+      dataParameters
+    );
+  }
+}

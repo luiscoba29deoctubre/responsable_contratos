@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+.tablaLista {
+  /* border: 1px solid blue; */
+  width: 25%;
+  float: left;
+}
+
+.tablaData {
+  /* border: 1px solid blue; */
+  width: 75%;
+  float: left;
+}
+
+#boton-add {
+  margin: 4%;
+  background-color: skyblue;
+}
+
+.espaciado-central {
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align: center;
+}
+
+.titulos {
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  line-height: 23px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 24px;
+}

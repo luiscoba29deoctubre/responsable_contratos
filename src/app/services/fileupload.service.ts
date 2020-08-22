@@ -11,12 +11,11 @@ export class FileUploadService {
   // sacado de https://stackoverflow.com/questions/47936183/angular-file-upload
 
   constructor(private http: HttpClient) {}
-  public postFileParameters(fileToUpload: File): Observable<boolean> {
-    const endpoint = "your-destination-url";
+  public saveFileParametersXLSX(fileToUpload: File): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("fileKey", fileToUpload, fileToUpload.name);
     return this.http.post<any>( // aqui estamos enviando el un parametro y el body al mismo tiempo
-      `${this.apiUrl}/parameters/postFileParameters`,
+      `${this.apiUrl}/responsable-api/v1/parameters/postFileParameters`,
       formData
     );
 

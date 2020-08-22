@@ -67,7 +67,7 @@ export class ParametricaComponent implements OnInit {
   }
 
   uploadFileToActivity() {
-    this.fileUploadService.postFileParameters(this.fileToUpload).subscribe(
+    this.fileUploadService.saveFileParametersXLSX(this.fileToUpload).subscribe(
       (data) => {
         // do something, if upload success
       },

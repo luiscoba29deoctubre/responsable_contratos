@@ -37,14 +37,15 @@
           </button>
         </div>
 
-        <!--div class="form-group">
-          <label for="file">Subir archivo</label>
+        <div class="form-group" style="    margin-bottom: 15px;
+        text-align: center;">
+          <label for="file" style="margin-right: 10px;">Subir archivo</label>
           <input
             type="file"
             id="file"
             (change)="handleFileInput($event.target.files)"
           />
-        </div-->
+        </div>
 
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource" matSort>

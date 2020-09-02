@@ -25,7 +25,7 @@ export class ParametricaComponent implements OnInit {
 
   nameItemListSelected: string;
 
-  fileToUpload: File = null;
+  fileToUpload: File;
 
   displayedColumns: string[] = ["name", "code", "action"];
   dataSource = new MatTableDataSource<Parameter>();
@@ -67,9 +67,12 @@ export class ParametricaComponent implements OnInit {
   }
 
   uploadFileToActivity() {
+    console.log("hace click");
+
     this.fileUploadService.saveFileParametersXLSX(this.fileToUpload).subscribe(
       (data) => {
         // do something, if upload success
+        console.log("regresaaaaaaa");
       },
       (error) => {
         console.log(error);

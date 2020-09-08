@@ -13,6 +13,9 @@ export class FileUploadService {
   constructor(private http: HttpClient) {}
   public saveFileParametersXLSX(fileToUpload: File): Observable<boolean> {
     const formData: FormData = new FormData();
+
+    console.log('fileToUpload.name', fileToUpload.name);
+
     formData.append("file", fileToUpload, fileToUpload.name);
     return this.http.post<any>( // aqui estamos enviando el un parametro y el body al mismo tiempo
       `${this.apiUrl}/proveedor-api/v1/forms/upload/`,

@@ -1,17 +1,16 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import {
-  MatTable,
   MatDialog,
   MatPaginator,
-  MatTableDataSource,
   MatSort,
+  MatTableDataSource,
 } from "@angular/material";
-import { DialogBoxComponent } from "../dialog-box/dialog-box.component";
+import { Parameter } from "../../models/parameter";
 // services
 import { ApiService } from "../../services/api.service";
-import { Parameter } from "../../models/parameter";
 import { FileUploadService } from "../../services/fileupload.service";
 import { NotificationService } from "../../services/notification.service";
+import { DialogBoxComponent } from "../dialog-box/dialog-box.component";
 
 @Component({
   selector: "app-parametrica",

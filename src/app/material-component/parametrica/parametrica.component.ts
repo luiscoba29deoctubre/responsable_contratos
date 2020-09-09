@@ -19,7 +19,7 @@ import { DialogBoxComponent } from "../dialog-box/dialog-box.component";
 })
 export class ParametricaComponent implements OnInit {
   allParameters: any; // es json que contiene todos los archivos json
-  dataParameters: any[] = []; // es el json especifico que aparecera en la semana
+  dataParameters: Parameter[] = []; // es el json especifico
   allNameParameters: any[] = []; // son los nombres de los archivos json
 
   nameItemListSelected: string;
@@ -139,7 +139,7 @@ export class ParametricaComponent implements OnInit {
     // this.paginator.renderRows();
   }
 
-  updateRowData(row_obj) {
+  updateRowData(row_obj: Parameter) {
     // comprobaciòn para ver si ya existe el codigo
     const foundElement = this.dataParameters.find(
       (element) => row_obj.code === element.code
@@ -149,21 +149,15 @@ export class ParametricaComponent implements OnInit {
       // se muestra mensaje de advertencia
       this.showToasterError();
     } else {
-      let id_row: number;
       for (let i = 0; i < this.dataParameters.length; i++) {
         if (this.dataParameters[i].id === row_obj.id) {
-          id_row = row_obj.id;
+          this.dataParameters[i].id = row_obj.id;
+          this.dataParameters[i].code = row_obj.code;
+          this.dataParameters[i].name = row_obj.name;
+
           break;
         }
       }
-      this.dataParameters = this.dataParameters.filter((value, key) => {
-        return value.id !== row_obj.id;
-      });
-      this.dataParameters.push({
-        id: id_row,
-        code: row_obj.code,
-        name: row_obj.name,
-      });
     }
   }
 

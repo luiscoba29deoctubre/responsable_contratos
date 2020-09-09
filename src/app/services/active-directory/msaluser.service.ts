@@ -35,7 +35,7 @@ export class MsalUserService {
       const lastPosition = mail.indexOf("@");
       let name = mail.substring(0, lastPosition);
 
-      name = name == "lcoba" ? "fguaman" : name;
+      name = name === "lcoba" ? "fguaman" : name;
 
       this.apiDenariusService
         .getValidarPerfil(name) // va a ocurrir un error si tiene mas de 1 perfil en denarius.
@@ -44,7 +44,7 @@ export class MsalUserService {
           // guardamos el perfil para enviarlo a 'menu-items.ts'
           this._perfil = perfilUsuarioDenarius.NombrePerfil;
 
-          if (this._perfil == null || this._perfil == undefined) {
+          if (this._perfil == null || this._perfil === undefined) {
             this.showToasterWarning();
 
             this.logout();

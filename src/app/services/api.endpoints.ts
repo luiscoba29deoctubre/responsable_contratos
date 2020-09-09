@@ -15,10 +15,6 @@ export class ApiEndpoints {
   /** Url API */
   public url_api: string = this.url_base + this.api_version;
 
-  // Login
-  /** Url Login */
-  public url_api_auth_login: string = this.url_api + "/auth/login";
-
   // Usuarios
   public url_api_usuarios: string = this.url_api + "/users";
 

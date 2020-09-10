@@ -22,16 +22,14 @@ export class ApiService {
   }
 
   public putSaveDataParameters(
-    dataParameters: any[],
-    nameDataParameter: string
+    registro: any,
+    entidad: string
   ): Observable<any> {
-    nameDataParameter =
-      nameDataParameter.charAt(0).toLowerCase() + nameDataParameter.slice(1); // ponemos la primera letra en Mayuscula
-    nameDataParameter = nameDataParameter.replace(" ", "_");
+    entidad = entidad.charAt(0).toLowerCase() + entidad.slice(1); // ponemos la primera letra en 'minuscula'
 
     return this.http.put<any>( // aqui estamos enviando el un parametro y el body al mismo tiempo
-      `${this.apiUrl}/parameters/putSaveOrUpdateDataParameters/${nameDataParameter}`,
-      dataParameters
+      `${this.apiUrl}/parameters/putSaveOrUpdateParameters/${entidad}`,
+      registro
     );
   }
 }

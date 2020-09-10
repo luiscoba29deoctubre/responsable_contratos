@@ -8,7 +8,7 @@ import {
 import { Parameter } from "../../models/parameter";
 // services
 import { ApiService } from "../../services/api.service";
-import { FileUploadService } from "../../services/fileupload.service";
+// import { FileUploadService } from "../../services/fileupload.service";
 import { NotificationService } from "../../services/notification.service";
 import { DialogBoxComponent } from "../dialog-box/dialog-box.component";
 
@@ -24,7 +24,7 @@ export class ParametricaComponent implements OnInit {
 
   nameItemListSelected: string;
 
-  fileToUpload: File;
+  // fileToUpload: File;
 
   displayedColumns: string[] = ["name", "code", "action"];
   dataSource = new MatTableDataSource<Parameter>();
@@ -34,18 +34,15 @@ export class ParametricaComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private apiservice: ApiService,
-    private notifyService: NotificationService,
-    private fileUploadService: FileUploadService
+    private notifyService: NotificationService
   ) {
     this.apiservice.getAllParameters().subscribe((allParameters) => {
+      console.log("llega allParameters", allParameters);
+
       this.allParameters = allParameters;
       // con esto obtenemos los nombres de los archivos json
-      for (let key in allParameters) {
+      for (const key in allParameters) {
         if (allParameters.hasOwnProperty(key)) {
-          // console.log(key + " -> " + allParameters[key]);
-          key = key.replace(".json", "");
-          key = key.replace("_", " ");
-          key = key.charAt(0).toUpperCase() + key.slice(1); // ponemos la primera letra en Mayuscula
           this.allNameParameters.push(key); // almacenamos las claves
         }
       }
@@ -54,14 +51,17 @@ export class ParametricaComponent implements OnInit {
 
   // sacado de https://morioh.com/p/526559a86600 el Toast que muestra mensajes
   showToasterSuccess() {
-    this.notifyService.showSuccess("Información guardada", "Información");
+    this.notifyService.showSuccess("Información guardada", "Éxito");
   }
 
   showToasterError() {
-    this.notifyService.showWarning("Código existente", "Error");
+    this.notifyService.showWarning(
+      "No se puede actualizar",
+      "Código existente"
+    );
   }
 
-  handleFileInput(files: FileList) {
+  /*handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
   }
 
@@ -77,20 +77,15 @@ export class ParametricaComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  }*/
 
   obtenerParametro(nameParameter) {
     this.nameItemListSelected = nameParameter;
-    for (let key in this.allParameters) {
+    for (const key in this.allParameters) {
       if (this.allParameters.hasOwnProperty(key)) {
-        // console.log(key + " -> " + allParameters[key]);
-        key = key.replace(".json", "");
-        key = key.replace("_", " ");
-        key = key.charAt(0).toUpperCase() + key.slice(1); // ponemos la primera letra en Mayuscula
-
         if (key === nameParameter) {
           // volvemos a construir el nombre del archivo json
-          this.dataParameters = this.allParameters[this.createNameJson()]; // agregamos los parametros a la tabla de parametros
+          this.dataParameters = this.allParameters[key]; // agregamos los parametros a la tabla de parametros
 
           this.dataSource.data = this.dataParameters;
         }
@@ -113,8 +108,8 @@ export class ParametricaComponent implements OnInit {
       } else if (result.event === "Eliminar") {
         this.deleteRowData(result.data);
       }
-      this.allParameters[this.createNameJson()] = this.dataParameters;
-      this.enviarDataParameterOnServer();
+      this.allParameters[this.nameItemListSelected] = this.dataParameters;
+      this.enviarDataParameterOnServer(result.data);
       this.dataSource.data = this.dataParameters;
     });
   }
@@ -140,23 +135,26 @@ export class ParametricaComponent implements OnInit {
   }
 
   updateRowData(row_obj: Parameter) {
-    // comprobaciòn para ver si ya existe el codigo
-    const foundElement = this.dataParameters.find(
-      (element) => row_obj.code === element.code
-    );
-
-    if (foundElement) {
-      // se muestra mensaje de advertencia
-      this.showToasterError();
-    } else {
-      for (let i = 0; i < this.dataParameters.length; i++) {
-        if (this.dataParameters[i].id === row_obj.id) {
-          this.dataParameters[i].id = row_obj.id;
-          this.dataParameters[i].code = row_obj.code;
+    for (let i = 0; i < this.dataParameters.length; i++) {
+      if (this.dataParameters[i].id === row_obj.id) {
+        // comprobaciòn para ver si ya existe el codigo
+        if (this.dataParameters[i].code === row_obj.code) {
           this.dataParameters[i].name = row_obj.name;
+        } else {
+          const foundElement = this.dataParameters.filter(
+            (element) => row_obj.code === element.code
+          );
 
-          break;
+          if (foundElement.length >= 1) {
+            // se muestra mensaje de advertencia
+            this.showToasterError();
+          } else {
+            this.dataParameters[i].code = row_obj.code;
+            this.dataParameters[i].name = row_obj.name;
+          }
         }
+
+        break;
       }
     }
   }
@@ -167,17 +165,9 @@ export class ParametricaComponent implements OnInit {
     });
   }
 
-  createNameJson() {
-    let key = this.nameItemListSelected;
-    key = key.charAt(0).toLowerCase() + key.slice(1); // ponemos la primera letra en Mayuscula
-    key = key.replace(" ", "_");
-    key = key + ".json";
-    return key;
-  }
-
-  enviarDataParameterOnServer() {
+  enviarDataParameterOnServer(data_row) {
     this.apiservice
-      .putSaveDataParameters(this.dataParameters, this.nameItemListSelected)
+      .putSaveDataParameters(data_row, this.nameItemListSelected)
       .subscribe(
         (success) => console.log("enviarDataParameterOnServer() successful."),
         (error) => console.log("enviarDataParameterOnServer() error.")

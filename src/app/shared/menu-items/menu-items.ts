@@ -18,6 +18,13 @@ const MENUITEMS = [
     perfil: "AUDITOR",
   },
   {
+    state: "app-reporte",
+    type: "link",
+    name: "Reporte",
+    icon: "all_inclusive",
+    perfil: "AUDITOR",
+  },
+  {
     state: "new-component",
     type: "link",
     name: "Nuevo Componente",
@@ -30,7 +37,7 @@ const MENUITEMS = [
 export class MenuItems {
   public perfil: string;
 
-  constructor(private msalService: MsalUserService    ) {}
+  constructor(private msalService: MsalUserService) {}
 
   getMenuitem(): Menu[] {
     let SHOW_MENUITEMS: Menu[] = [];

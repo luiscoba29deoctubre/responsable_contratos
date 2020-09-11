@@ -16,6 +16,7 @@ import { ParametricaComponent } from "./parametrica/parametrica.component";
 import { DialogBoxComponent } from "./dialog-box/dialog-box.component";
 import { DialogExitComponent } from "./dialog-exit/dialog-exit.component";
 import { DialogAcceptComponent } from "./dialog-accept/dialog-accept.component";
+import { ReporteComponent } from './reporte/reporte.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { DialogAcceptComponent } from "./dialog-accept/dialog-accept.component";
     DialogBoxComponent,
     DialogExitComponent,
     DialogAcceptComponent,
+    ReporteComponent,
   ],
 })
 export class MaterialComponentsModule {}

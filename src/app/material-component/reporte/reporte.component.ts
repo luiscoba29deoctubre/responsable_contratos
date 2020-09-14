@@ -350,26 +350,87 @@ export class ReporteComponent implements OnInit {
               columns: [
                 {
                   table: {
-                    widths: ["80%"],
-                    heights: [40],
+                    widths: ["70%"],
+                    heights: [41],
                     headerRows: 1,
                     body: [[{}]],
+                  },
+                  margin: [45, 0, 0, 10],
+                },
+                {
+                  table: {
+                    widths: ["70%"],
+                    heights: [41],
+                    headerRows: 1,
+                    body: [[{}]],
+                  },
+                  margin: [45, 0, 0, 10],
+                },
+                {
+                  table: {
+                    widths: ["70%"],
+                    heights: [41],
+                    headerRows: 1,
+                    body: [[{}]],
+                  },
+                  margin: [45, 0, 0, 10],
+                },
+              ],
+            },
+            {
+              columns: [
+                {
+                  table: {
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
+                    headerRows: 1,
+                    body: [
+                      [
+                        {
+                          text: "Nombre:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
                 {
                   table: {
-                    widths: ["80%"],
-                    heights: [40],
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
                     headerRows: 1,
-                    body: [[{}]],
+                    body: [
+                      [
+                        {
+                          text: "Nombre:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
                 {
                   table: {
-                    widths: ["80%"],
-                    heights: [40],
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
                     headerRows: 1,
-                    body: [[{}]],
+                    body: [
+                      [
+                        {
+                          text: "Nombre:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
               ],
@@ -377,36 +438,115 @@ export class ReporteComponent implements OnInit {
             {
               columns: [
                 {
-                  text: "Nombre:",
-                },
-                {
                   table: {
-                    widths: ["100%"],
-                    heights: [10],
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
                     headerRows: 1,
-                    body: [[{}]],
+                    body: [
+                      [
+                        {
+                          text: "Cargo:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
                 {
-                  text: "Nombre:",
-                },
-                {
                   table: {
-                    widths: ["100%"],
-                    heights: [10],
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
                     headerRows: 1,
-                    body: [[{}]],
+                    body: [
+                      [
+                        {
+                          text: "Cargo:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
                 {
-                  text: "Nombre:",
+                  table: {
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
+                    headerRows: 1,
+                    body: [
+                      [
+                        {
+                          text: "Cargo:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              columns: [
+                {
+                  table: {
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
+                    headerRows: 1,
+                    body: [
+                      [
+                        {
+                          text: "Fecha:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
+                  },
                 },
                 {
                   table: {
-                    widths: ["100%"],
-                    heights: [10],
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
                     headerRows: 1,
-                    body: [[{}]],
+                    body: [
+                      [
+                        {
+                          text: "Fecha:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
+                  },
+                },
+                {
+                  table: {
+                    widths: ["23%", "55%"],
+                    heights: [10, 10, 10],
+                    headerRows: 1,
+                    body: [
+                      [
+                        {
+                          text: "Fecha:",
+                          bold: true,
+                          fontSize: 9,
+                          border: [false, false, false, false],
+                        },
+                        {},
+                      ],
+                    ],
                   },
                 },
               ],

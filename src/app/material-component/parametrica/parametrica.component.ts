@@ -101,16 +101,18 @@ export class ParametricaComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === "Agregar") {
-        this.addRowData(result.data);
-      } else if (result.event === "Actualizar") {
-        this.updateRowData(result.data);
-      } else if (result.event === "Eliminar") {
-        this.deleteRowData(result.data);
+      if (result) {
+        if (result.event === "Agregar") {
+          this.addRowData(result.data);
+        } else if (result.event === "Actualizar") {
+          this.updateRowData(result.data);
+        } else if (result.event === "Eliminar") {
+          this.deleteRowData(result.data);
+        }
+        this.allParameters[this.nameItemListSelected] = this.dataParameters;
+        this.enviarDataParameterOnServer(result.data);
+        this.dataSource.data = this.dataParameters;
       }
-      this.allParameters[this.nameItemListSelected] = this.dataParameters;
-      this.enviarDataParameterOnServer(result.data);
-      this.dataSource.data = this.dataParameters;
     });
   }
   // hace el cambio del registro en la tabla

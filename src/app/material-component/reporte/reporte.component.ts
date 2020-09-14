@@ -341,16 +341,16 @@ export class ReporteComponent implements OnInit {
             },
             {
               columns: [
-                { text: "ELABORADO POR:" },
-                { text: "REVISADO POR:" },
-                { text: "APROBADO POR:" },
+                { text: "ELABORADO POR:", margin: [44, 0, 0, 0] },
+                { text: "REVISADO POR:", margin: [44, 0, 0, 0] },
+                { text: "APROBADO POR:", margin: [44, 0, 0, 0] },
               ],
             },
             {
               columns: [
                 {
                   table: {
-                    widths: ["70%"],
+                    widths: ["90%"],
                     heights: [41],
                     headerRows: 1,
                     body: [[{}]],
@@ -359,7 +359,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["70%"],
+                    widths: ["90%"],
                     heights: [41],
                     headerRows: 1,
                     body: [[{}]],
@@ -368,7 +368,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["70%"],
+                    widths: ["90%"],
                     heights: [41],
                     headerRows: 1,
                     body: [[{}]],
@@ -381,7 +381,7 @@ export class ReporteComponent implements OnInit {
               columns: [
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -399,7 +399,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -417,7 +417,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -439,7 +439,7 @@ export class ReporteComponent implements OnInit {
               columns: [
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -457,7 +457,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -475,7 +475,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -497,7 +497,7 @@ export class ReporteComponent implements OnInit {
               columns: [
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -515,7 +515,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [
@@ -533,7 +533,7 @@ export class ReporteComponent implements OnInit {
                 },
                 {
                   table: {
-                    widths: ["23%", "55%"],
+                    widths: ["23%", "70%"],
                     heights: [10, 10, 10],
                     headerRows: 1,
                     body: [

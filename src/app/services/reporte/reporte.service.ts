@@ -8,11 +8,11 @@ import { ReporteDto } from "../../models/dtos/ReporteDto";
   providedIn: "root",
 })
 export class ReporteService {
-  private apiUrl = "http://localhost:3000/responsable-api/v1"; // URL to web api del servidor
+  private apiUrl = "http://localhost:3003/responsable-api/v1"; // URL to web api del servidor
 
   constructor(private router: Router, private http: HttpClient) {}
 
   public getProveedores(): Observable<any> {
-    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedores`);
+    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedor/proveedores`);
   }
 }

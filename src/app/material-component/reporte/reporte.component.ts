@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ScriptService } from "./script.service";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { ReporteService } from "../../services/reporte/reporte.service";
+import { ReporteDto } from "../../models/dtos/ReporteDto";
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare let pdfMake: any;
 
@@ -22,8 +25,25 @@ export class ReporteComponent implements OnInit {
     documental: 50,
   };
 
-  constructor(private scriptService: ScriptService) {
+  constructor(
+    private reporteService: ReporteService,
+    private scriptService: ScriptService,
+    private spinner: NgxSpinnerService
+  ) {
+    this.spinner.show();
     this.scriptService.load("pdfMake", "vfsFonts");
+
+    this.reporteService.getProveedores().subscribe(
+      async (reporteDto: ReporteDto) => {
+        console.log("llega reporteDto", reporteDto);
+
+        this.spinner.hide();
+      },
+      (error) => {
+        console.log("aqui error hay ", error);
+        this.spinner.hide();
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -217,7 +237,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "A",
                       bold: false,
-                          alignment: "center",
+                      alignment: "center",
                     },
                     {
                       text: "PERFIL EMPRESARIAL",
@@ -232,7 +252,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "B",
                       bold: false,
-                          alignment: "center",
+                      alignment: "center",
                     },
                     {
                       text: "PERFIL FINANCIERO",
@@ -247,7 +267,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "C",
                       bold: false,
-                          alignment: "center",
+                      alignment: "center",
                     },
                     {
                       text: "PERFIL OPERATIVO",
@@ -259,7 +279,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "D",
                       bold: false,
-                          alignment: "center",
+                      alignment: "center",
                     },
                     {
                       text: "PERFIL COMERCIAL",

@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
 
-  host: "http://localhost:3000",
+  host: "http://localhost:3003",
 
   baseUrl: "https://graph.microsoft.com/v1.0/users",
   scopeUri: ["user.read"], // ['api://d865bf85-0e22-42ec-9e74-bdcf0178f9af/retiro'],

@@ -7,7 +7,7 @@ import { Parameter } from "../models/parameter";
   providedIn: "root",
 })
 export class ApiService {
-  private apiUrl = "http://localhost:3000/responsable-api/v1"; // URL to web api del servidor
+  private apiUrl = "http://localhost:3003/responsable-api/v1"; // URL to web api del servidor
 
   constructor(private http: HttpClient) {}
 

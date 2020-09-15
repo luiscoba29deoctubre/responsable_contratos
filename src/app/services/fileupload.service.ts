@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class FileUploadService {
-  private apiUrl = "http://localhost:3000"; // URL to web api del servidor
+  private apiUrl = "http://localhost:3003"; // URL to web api del servidor
 
   // sacado de https://stackoverflow.com/questions/47936183/angular-file-upload
 

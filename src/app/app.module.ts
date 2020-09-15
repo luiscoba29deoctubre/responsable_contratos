@@ -29,6 +29,8 @@ import { MsalModule } from "@azure/msal-angular";
 
 import { JwtModule } from "@auth0/angular-jwt";
 
+import { NgxSpinnerModule } from "ngx-spinner";
+
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -59,7 +61,7 @@ export const protectedResourceMap: any = [
     DemoMaterialModule,
     FormsModule,
     FlexLayoutModule,
-
+    NgxSpinnerModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
     HttpClientModule,

@@ -153,6 +153,7 @@ export class ParametricaComponent implements OnInit {
           } else {
             this.dataParameters[i].code = row_obj.code;
             this.dataParameters[i].name = row_obj.name;
+            this.showToasterSuccess();
           }
         }
 

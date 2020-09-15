@@ -217,6 +217,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "A",
                       bold: false,
+                          alignment: "center",
                     },
                     {
                       text: "PERFIL EMPRESARIAL",
@@ -231,6 +232,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "B",
                       bold: false,
+                          alignment: "center",
                     },
                     {
                       text: "PERFIL FINANCIERO",
@@ -245,6 +247,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "C",
                       bold: false,
+                          alignment: "center",
                     },
                     {
                       text: "PERFIL OPERATIVO",
@@ -256,6 +259,7 @@ export class ReporteComponent implements OnInit {
                     {
                       text: "D",
                       bold: false,
+                          alignment: "center",
                     },
                     {
                       text: "PERFIL COMERCIAL",

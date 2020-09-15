@@ -11,3 +11,18 @@
   margin-right: 5px;
   margin-left: 5px;
 }
+
+#cuadro-negrita {
+  border: 2px solid black;
+  text-align: center;
+}
+
+#cuadro2 {
+  border: 1px solid black;
+  text-align: center;
+}
+
+#fila {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

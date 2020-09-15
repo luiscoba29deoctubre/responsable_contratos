@@ -2,56 +2,57 @@
   <div class="container">
     <div class="row">
       <img src="" />
-      <h3>CERTIFICADO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES</h3>
+      <h2>CERTIFICADO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES</h2>
     </div>
-
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <label>CÓDIGO</label>
-        <input type="text" />
+    <div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label>CÓDIGO</label>
+          <input type="text" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label>FECHA DE EMISIÓN</label>
+          <input type="text" />
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label>FECHA DE ACTUALIZACIÓN</label>
+          <input type="text" />
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <label>FECHA DE EMISIÓN</label>
-        <input type="text" />
-      </div>
-      <div class="col">
-        <label>FECHA DE ACTUALIZACIÓN</label>
-        <input type="text" />
-      </div>
-    </div>
-
     <div>
       <p>
         El presente documento certifica que el proceso de CALIFICACIÓN DE
-        PROVEEDORES para la COOPERATIVA DE AHORRO y CREDITO 29 DE OCTUBRE LTDA.,
-        ha ....
+        PROVEEDORES para la COOPERATIVA DE AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA.,
+        ha concluido, reflejando la calificación detallada a continuación, para
+        el proveedor:
       </p>
       <table>
         <tr>
           <td>NOMBRE / RAZÓN SOCIAL</td>
-          <td></td>
+          <td>PUBLICIDAD ESTRELLA S.A.</td>
         </tr>
         <tr>
           <td>NOMBRE COMERCIAL</td>
-          <td></td>
+          <td>PUBLIESTRELLA</td>
         </tr>
         <tr>
           <td>FECHA DE CALIFICACIÓN</td>
-          <td></td>
+          <td>Monday, September 14, 2020</td>
         </tr>
         <tr>
           <td>ACTIVIDAD ECONÓMICA Principal</td>
-          <td></td>
+          <td>Venta de productos publicitarios</td>
         </tr>
         <tr>
           <td>ACTIVIDAD ECONÓMICA Secundaria</td>
-          <td></td>
+          <td>Servicios comunicacionales, consultoría en comunicación</td>
         </tr>
       </table>
 
-      <h3>ACTIVIVSDADES PARA LAS QUE SE CALIFICA:</h3>
+      <h3>ACTIVIDADES PARA LAS QUE SE CALIFICA:</h3>
       <table>
         <tr>
           <th></th>
@@ -82,7 +83,7 @@
         </tr>
       </table>
       <div>
-        <h2>DETALLE DE LA CALIFICACIÓN</h2>
+        <h3>DETALLE DE LA CALIFICACIÓN</h3>
         <table>
           <tr>
             <th>SECCIÓN</th>
@@ -110,7 +111,7 @@
         </table>
       </div>
       <div>
-        <h2>RESULTADO</h2>
+        <h3>RESULTADO</h3>
         <label>El puntaje obtenido por el proveedor</label>
         <span>PUBLIESTRELLA</span>
         <label>es de</label>
@@ -127,7 +128,7 @@
         <label>a la COOPERATIVA DE AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA. </label>
       </div>
       <div>
-        <h2>LIMITACIONES</h2>
+        <h3>LIMITACIONES</h3>
         <label
           >Los resultados contenidos en el presente informe, se basan en la
           información y documentación legal, tributaria y financiera
@@ -150,40 +151,49 @@
         </label>
       </div>
       <div>
-        <h2>FIRMAS</h2>
+        <h3>FIRMAS</h3>
         <table>
           <tr>
-            <th>ELABORADO POR:</th>
-            <th>REVISADO POR:</th>
-            <th>APROBADO POR:</th>
+            <th colspan="2">ELABORADO POR:</th>
+            <th colspan="2">REVISADO POR:</th>
+            <th colspan="2">APROBADO POR:</th>
           </tr>
           <tr>
-            <td>cudrado</td>
-            <td>cudrado</td>
-            <td>cudrado</td>
+            <td colspan="2"><div id="caja"></div></td>
+            <td colspan="2">
+              <div id="caja"></div>
+            </td>
+            <td colspan="2">
+              <div id="caja"></div>
+            </td>
           </tr>
           <tr>
-            <td></td>
             <td>Nombre:</td>
+            <td id="cuadro">ASISTENTE</td>
             <td>Nombre:</td>
+            <td id="cuadro">ASISTENTE</td>
+            <td>Nombre:</td>
+            <td id="cuadro">ASISTENTE</td>
           </tr>
           <tr>
-            <td>ASISTENTE ADMINISTRATIVA</td>
             <td>Cargo:</td>
+            <td id="cuadro">ASISTENTE</td>
             <td>Cargo:</td>
+            <td id="cuadro">ASISTENTE</td>
+            <td>Cargo:</td>
+            <td id="cuadro">ASISTENTE</td>
           </tr>
           <tr>
-            <td>9/11/2020</td>
             <td>Fecha:</td>
+            <td id="cuadro">9/14/2020</td>
             <td>Fecha:</td>
+            <td id="cuadro">9/14/2020</td>
+            <td>Fecha:</td>
+            <td id="cuadro">9/14/2020</td>
           </tr>
         </table>
       </div>
     </div>
-
-    <button mat-button color="warn" style="background-color: skyblue">
-      Warn
-    </button>
 
     <button
       (click)="generatePdf('open')"

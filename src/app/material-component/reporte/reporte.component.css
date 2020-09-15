@@ -1,0 +1,13 @@
+#caja {
+  width: 250px;
+  height: 100px;
+  border: 1px solid black;
+  margin-right: 15px;
+  margin-left: 25px;
+}
+
+#cuadro {
+  border: 1px solid black;
+  margin-right: 5px;
+  margin-left: 5px;
+}

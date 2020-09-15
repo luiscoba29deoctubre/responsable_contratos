@@ -19,11 +19,15 @@
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico"],
             "styles": [
+                    "./node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css",
               "src/assets/styles/style.scss"
             ],
-            "scripts": []
+            "scripts": [
+               "./node_modules/jquery/dist/jquery.js",
+               "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {

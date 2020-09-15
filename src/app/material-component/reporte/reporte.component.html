@@ -1,17 +1,27 @@
-<div class="container">
-  <mat-card>
+<mat-card>
+  <div class="container">
     <div class="row">
       <img src="" />
-      <h2>CERTIFICADO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES</h2>
+      <h3>CERTIFICADO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES</h3>
     </div>
-    <div>
-      <label>CÓDIGO</label>
-      <input type="text" />
-      <label>FECHA DE EMISIÓN</label>
-      <input type="text" />
-      <label>FECHA DE ACTUALIZACIÓN</label>
-      <input type="text" />
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <label>CÓDIGO</label>
+        <input type="text" />
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <label>FECHA DE EMISIÓN</label>
+        <input type="text" />
+      </div>
+      <div class="col">
+        <label>FECHA DE ACTUALIZACIÓN</label>
+        <input type="text" />
+      </div>
+    </div>
+
     <div>
       <p>
         El presente documento certifica que el proceso de CALIFICACIÓN DE
@@ -171,15 +181,15 @@
       </div>
     </div>
 
-
     <button mat-button color="warn" style="background-color: skyblue">
       Warn
     </button>
 
-    <button (click)="generatePdf('open')"
-      class="btn btn-primary d-flex align-items-center justify-content-center">
-      <i class="material-icons">
-        picture_as_pdf
-      </i> <span>Open PDF</span></button>
-  </mat-card>
-</div>
+    <button
+      (click)="generatePdf('open')"
+      class="btn btn-primary d-flex align-items-center justify-content-center"
+    >
+      <i class="material-icons"> picture_as_pdf </i> <span>Open PDF</span>
+    </button>
+  </div>
+</mat-card>

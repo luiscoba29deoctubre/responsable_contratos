@@ -142,7 +142,7 @@ export class ParametricaComponent implements OnInit {
         // comprobaciòn para ver si ya existe el codigo
         if (this.dataParameters[i].code === row_obj.code) {
           this.dataParameters[i].name = row_obj.name;
-          this.showToasterSuccess();// codigo Pancho test
+          this.showToasterSuccess();// codigo Pancho test PanchoPancho
         } else {
           const foundElement = this.dataParameters.filter(
             (element) => row_obj.code === element.code

@@ -5,7 +5,6 @@
 
 export const environment = {
   production: false,
-
   host: "http://localhost:3003",
 
   baseUrl: "https://graph.microsoft.com/v1.0/users",

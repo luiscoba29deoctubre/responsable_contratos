@@ -25,6 +25,7 @@ export class ApiService {
     registro: any,
     entidad: string
   ): Observable<any> {
+    entidad = entidad.split("_")[1];
     entidad = entidad.charAt(0).toLowerCase() + entidad.slice(1); // ponemos la primera letra en 'minuscula'
 
     return this.http.put<any>( // aqui estamos enviando el un parametro y el body al mismo tiempo

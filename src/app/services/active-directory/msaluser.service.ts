@@ -35,7 +35,7 @@ export class MsalUserService {
       const lastPosition = mail.indexOf("@");
       let name = mail.substring(0, lastPosition);
 
-      name = name === "lcoba" ? "fguaman" : name;
+      name = name === "lcoba" ? "lpaillacho" : name;
 
       this.apiDenariusService
         .getValidarPerfil(name) // va a ocurrir un error si tiene mas de 1 perfil en denarius.

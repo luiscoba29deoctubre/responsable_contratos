@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { ScriptService } from "./script.service";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { ReporteService } from "../../services/reporte/reporte.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
 import { NgxSpinnerService } from "ngx-spinner";
-
-declare let pdfMake: any;
 
 @Component({
   selector: "app-reporte",
@@ -105,12 +103,12 @@ export class ReporteComponent implements OnInit {
   }
 
   buildTableBodySinCabecera(data, columns) {
-    var body = [];
+    const body = [];
 
     //  body.push(columns);
 
     data.forEach(function (row) {
-      var dataRow = [];
+      const dataRow = [];
 
       columns.forEach(function (column) {
         dataRow.push(row[column].toString());
@@ -132,12 +130,12 @@ export class ReporteComponent implements OnInit {
   }
 
   buildTableBody(data, columns) {
-    var body = [];
+    const body = [];
 
     body.push(["", "categoria", "detalle"]);
 
     data.forEach(function (row) {
-      var dataRow = [];
+      const dataRow = [];
 
       columns.forEach(function (column) {
         dataRow.push(row[column].toString());
@@ -173,7 +171,7 @@ export class ReporteComponent implements OnInit {
                 {
                   text: "CERTIFICADO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES",
                   bold: true,
-                  fontSize: 20,
+                  fontSize: 15,
                   alignment: "center",
                   margin: [0, 0, 0, 20],
                 },
@@ -323,7 +321,6 @@ export class ReporteComponent implements OnInit {
                 ],
               },
             },
-            ,
             {
               text: "RESULTADO",
               margin: [0, 20, 0, 5],

@@ -6,6 +6,8 @@ import { ReporteService } from "../../services/reporte/reporte.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
 import { NgxSpinnerService } from "ngx-spinner";
 
+declare let pdfMake: any;
+
 @Component({
   selector: "app-reporte",
   templateUrl: "./reporte.component.html",

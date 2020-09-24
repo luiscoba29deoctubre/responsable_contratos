@@ -113,7 +113,9 @@ export class ReporteComponent implements OnInit {
       const dataRow = [];
 
       columns.forEach(function (column) {
-        dataRow.push(row[column].toString());
+        console.log("column", { column });
+
+        dataRow.push({ text: row[column].toString(), fontSize: 10 });
       });
 
       body.push(dataRow);
@@ -134,7 +136,7 @@ export class ReporteComponent implements OnInit {
   buildTableBody(data, columns) {
     const body = [];
 
-    body.push(["", "categoria", "detalle"]);
+    body.push(["", "CATEGORIA", "Detalle del Bien / Servcio / Consultoría"]);
 
     data.forEach(function (row) {
       const dataRow = [];
@@ -143,7 +145,6 @@ export class ReporteComponent implements OnInit {
         dataRow.push({ text: row[column].toString(), fontSize: 10 });
       });
 
- 
       body.push(dataRow);
     });
 
@@ -208,7 +209,7 @@ export class ReporteComponent implements OnInit {
                 "El presente documento certifica que el proceso de CALIFICACIÓN DE PROVEEDORES para la COOPERATIVA DE AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA., ha concluido, reflejando la calificación detallada a continuación, para el proveedor:",
               margin: [0, 0, 0, 20],
               fontSize: 10,
-              alignment: "justify",
+              alignment: "center",
             },
 
             this.tableSinCabecera(this.externalDataRetrievedFromServer, [
@@ -227,7 +228,7 @@ export class ReporteComponent implements OnInit {
 
             {
               text:
-                "\t\t\t\t\t\t\t\t\t\t\t\t\tDETALLE DE LA CALIFICACIÓN\t\t\t\t\t\t\t\t\t\t\t\t\t",
+                "\t\t\t\t\t\t\t\t\t\t\t\t\tDETALLE DE LA CALIFICACIÓN  \t\t\t\t\t\t\t\t\t\t\t\t",
               bold: true,
               fontSize: 13,
               margin: [0, 20, 0, 5],

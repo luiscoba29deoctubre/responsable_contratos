@@ -32,36 +32,19 @@
           <h5 class="titulos">Lista de aspirantes a proveedores</h5>
           <mat-nav-list class="my-table mat-elevation-z8">
             <ng-container
-              *ngFor="let nameParameter of allNameParameters"
+              *ngFor="let proveedor of lstProveedoresActivos"
               class="puntero"
             >
               <a
-                (click)="obtenerParametro(nameParameter)"
+                (click)="generatePdf(proveedor.id)"
                 mat-list-item
                 href="javascript:void(0)"
               >
-                {{ nameParameter }}
+                {{ proveedor.razonsocial }}
               </a>
             </ng-container>
           </mat-nav-list>
         </mat-card>
-      </div>
-    </div>
-
-    <div class="row mt-3 form-group">
-      <!-- Button -->
-      <div
-        class="col"
-        style="margin-top: 10px; text-align: center; margin-bottom: 25px"
-      >
-        <!-- arreglar esta validacion -->
-        <button
-          (click)="generatePdf('open')"
-          class="btn btn-danger d-flex align-items-center justify-content-center"
-        >
-          <i class="material-icons"> picture_as_pdf </i>
-          <span>Generar PDF</span>
-        </button>
       </div>
     </div>
   </div>

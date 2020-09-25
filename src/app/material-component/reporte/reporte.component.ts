@@ -18,6 +18,8 @@ export class ReporteComponent implements OnInit {
 
   actividades = [];
 
+  lstProveedoresActivos = [];
+
   pesosPerfiles = {
     empresarial: 10,
     financiero: 20,
@@ -34,22 +36,12 @@ export class ReporteComponent implements OnInit {
   ) {
     this.spinner.show();
     this.scriptService.load("pdfMake", "vfsFonts");
-
-    this.reporteService.getProveedores().subscribe(
-      async (reporteDto: ReporteDto) => {
-        console.log("llega reporteDto", reporteDto);
-
-        this.spinner.hide();
-      },
-      (error) => {
-        console.log("aqui error hay ", error);
-        this.spinner.hide();
-      }
-    );
   }
 
   ngOnInit(): void {
     this.allNameParameters.push("key"); // almacenamos las claves
+
+    this.loadListaDeProveedoresActivos();
 
     this.actividades = [
       {
@@ -71,31 +63,43 @@ export class ReporteComponent implements OnInit {
     ];
   }
 
-  obtenerParametro(nameParameter) {
-    console.log("imprimo el parametro que llega", nameParameter);
+  loadListaDeProveedoresActivos() {
+    this.reporteService.getProveedoresActivos().subscribe(
+      async (lstProveedores) => {
+        console.log("llega lstProveedores", lstProveedores);
+
+        this.lstProveedoresActivos = lstProveedores;
+
+        this.spinner.hide();
+      },
+      (error) => {
+        console.log("aqui error hay ", error);
+        this.spinner.hide();
+      }
+    );
   }
 
-  generatePdf(action = "open") {
-    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+  generatePdf(id) {
+    this.reporteService.getProveedor(id).subscribe(
+      async (lstProveedores) => {
+        console.log("llega lstProveedores", lstProveedores);
 
-    console.log(pdfMake);
-    const documentDefinition = this.getDocumentDefinition();
 
-    switch (action) {
-      case "open":
-        pdfMake.createPdf(documentDefinition).open();
-        break;
-      case "print":
-        pdfMake.createPdf(documentDefinition).print();
-        break;
-      case "download":
-        pdfMake.createPdf(documentDefinition).download();
-        break;
 
-      default:
-        pdfMake.createPdf(documentDefinition).open();
-        break;
-    }
+
+        /* pdfMake.vfs = pdfFonts.pdfMake.vfs;
+        const documentDefinition = this.getDocumentDefinition();
+        pdfMake.createPdf(documentDefinition).open(); */
+
+        this.spinner.hide();
+      },
+      (error) => {
+        console.log("aqui error hay ", error);
+        this.spinner.hide();
+      }
+    );
+
+
   }
 
   buildTableBody(data, columns) {

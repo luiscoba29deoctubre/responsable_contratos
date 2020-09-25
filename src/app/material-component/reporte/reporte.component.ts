@@ -14,7 +14,8 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
-  externalDataRetrievedFromServer = [];
+  allNameParameters: any[] = []; // son los nombres de los archivos json
+
   actividades = [];
 
   pesosPerfiles = {
@@ -23,6 +24,7 @@ export class ReporteComponent implements OnInit {
     operativo: 30,
     comercial: 40,
     documental: 50,
+    total: 90,
   };
 
   constructor(
@@ -47,19 +49,7 @@ export class ReporteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.externalDataRetrievedFromServer = [
-      { data: "NOMBRE / RAZÓN SOCIAL", values: "PUBLICIDAD ESTRELLA S.A." },
-      { data: "NOMBRE COMERCIAL", values: "PUBLIESTRELLA" },
-      { data: "FECHA DE CALIFICACIÓN", values: "Sunday, September 13, 2020" },
-      {
-        data: "ACTIVIDAD ECONÓMICA Principal",
-        values: "Venta de productos publicitarios",
-      },
-      {
-        data: "ACTIVIDAD ECONÓMICA Secundaria",
-        values: "Servicios comunicacionales, consultoría en comunicación",
-      },
-    ];
+    this.allNameParameters.push("key"); // almacenamos las claves
 
     this.actividades = [
       {
@@ -79,6 +69,10 @@ export class ReporteComponent implements OnInit {
         detalle: "det de cat consult",
       },
     ];
+  }
+
+  obtenerParametro(nameParameter) {
+    console.log("imprimo el parametro que llega", nameParameter);
   }
 
   generatePdf(action = "open") {
@@ -104,39 +98,10 @@ export class ReporteComponent implements OnInit {
     }
   }
 
-  buildTableBodySinCabecera(data, columns) {
-    const body = [];
-
-    //  body.push(columns);
-
-    data.forEach(function (row) {
-      const dataRow = [];
-
-      columns.forEach(function (column) {
-        console.log("column", { column });
-
-        dataRow.push({ text: row[column].toString(), fontSize: 10 });
-      });
-
-      body.push(dataRow);
-    });
-
-    return body;
-  }
-
-  tableSinCabecera(data, columns) {
-    return {
-      table: {
-        //   headerRows: 1,
-        body: this.buildTableBodySinCabecera(data, columns),
-      },
-    };
-  }
-
   buildTableBody(data, columns) {
     const body = [];
 
-    body.push(["", "CATEGORIA", "Detalle del Bien / Servcio / Consultoría"]);
+    body.push(["", "CATEGORIA", "Detalle del Bien / Servicio / Consultoría"]);
 
     data.forEach(function (row) {
       const dataRow = [];
@@ -200,6 +165,7 @@ export class ReporteComponent implements OnInit {
                 { text: "FECHA DE EMISIÓN:", fontSize: 10, bold: true },
                 { text: "02-03-2020", fontSize: 10 },
                 { text: "FECHA DE ACTUALIZACIÓN:", fontSize: 10, bold: true },
+                {},
                 { text: "02-03-2020", fontSize: 10 },
               ],
               margin: [0, 0, 0, 20],
@@ -212,10 +178,81 @@ export class ReporteComponent implements OnInit {
               alignment: "center",
             },
 
-            this.tableSinCabecera(this.externalDataRetrievedFromServer, [
-              "data",
-              "values",
-            ]),
+            {
+              table: {
+                widths: ["50%", "50%"],
+                heights: [10, 10, 10, 10, 10, 10],
+                headerRows: 1,
+                body: [
+                  [
+                    {
+                      text: "NOMBRE / RAZÓN SOCIAL",
+                      bold: true,
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                    {
+                      text: "PUBLIESTRELLA",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                  ],
+                  [
+                    {
+                      text: "NOMBRE COMERCIAL",
+                      bold: true,
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                    {
+                      text: "PUBLIESTRELLA",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                  ],
+                  [
+                    {
+                      text: "FECHA DE CALIFICACIÓN",
+                      bold: true,
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                    {
+                      text: "Sunday, September 13, 2020",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                  ],
+                  [
+                    {
+                      text: "ACTIVIDAD ECONÓMICA Principal",
+                      bold: true,
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                    {
+                      text: "Venta de productos publicitarios",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                  ],
+                  [
+                    {
+                      text: "ACTIVIDAD ECONÓMICA Secundaria",
+                      bold: true,
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                    {
+                      text:
+                        "Servicios comunicacionales, consultoría en comunicación",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
+                  ],
+                ],
+              },
+            },
 
             {
               text: "ACTIVIDADES PARA LAS QUE SE CALIFICA:",
@@ -283,7 +320,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "11%",
+                      text: this.pesosPerfiles.empresarial + "%",
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -302,7 +339,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "38%",
+                      text: this.pesosPerfiles.financiero + "%",
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -320,7 +357,11 @@ export class ReporteComponent implements OnInit {
                       bold: false,
                       alignment: "center",
                     },
-                    {},
+                    {
+                      text: this.pesosPerfiles.operativo + "%",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
                   ],
                   [
                     {
@@ -335,7 +376,11 @@ export class ReporteComponent implements OnInit {
                       bold: false,
                       alignment: "center",
                     },
-                    {},
+                    {
+                      text: this.pesosPerfiles.comercial + "%",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
                   ],
                   [
                     {
@@ -361,7 +406,11 @@ export class ReporteComponent implements OnInit {
                       fontSize: 10,
                       bold: false,
                     },
-                    {},
+                    {
+                      text: this.pesosPerfiles.documental + "%",
+                      fontSize: 10,
+                      alignment: "center",
+                    },
                   ],
                   [
                     {
@@ -372,14 +421,19 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {},
-                    {},
+                    {
+                      text: this.pesosPerfiles.total + "%",
+                      bold: true,
+                      fontSize: 12,
+                      alignment: "center",
+                    },
                   ],
                 ],
               },
             },
             {
               text:
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tRESULTADO\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t RESULTADO\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
               bold: true,
               fontSize: 13,
               margin: [0, 20, 0, 5],

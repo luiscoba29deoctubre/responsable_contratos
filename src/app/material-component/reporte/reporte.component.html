@@ -26,6 +26,28 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col tablaLista">
+        <mat-card>
+          <h5 class="titulos">Lista de aspirantes a proveedores</h5>
+          <mat-nav-list class="my-table mat-elevation-z8">
+            <ng-container
+              *ngFor="let nameParameter of allNameParameters"
+              class="puntero"
+            >
+              <a
+                (click)="obtenerParametro(nameParameter)"
+                mat-list-item
+                href="javascript:void(0)"
+              >
+                {{ nameParameter }}
+              </a>
+            </ng-container>
+          </mat-nav-list>
+        </mat-card>
+      </div>
+    </div>
+
     <div class="row mt-3 form-group">
       <!-- Button -->
       <div
@@ -43,5 +65,4 @@
       </div>
     </div>
   </div>
-
 </mat-card>

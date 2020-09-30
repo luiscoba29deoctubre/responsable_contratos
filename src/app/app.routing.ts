@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
-
-import { FullComponent } from "./layouts/full/full.component";
 import { MsalGuard } from "@azure/msal-angular";
+import { FullComponent } from "./layouts/full/full.component";
 
 export const AppRoutes: Routes = [
   {

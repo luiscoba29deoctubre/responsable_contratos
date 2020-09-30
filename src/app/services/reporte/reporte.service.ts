@@ -18,7 +18,7 @@ export class ReporteService {
 
   public getProveedor(idProvider: number): Observable<any> {
     return this.http.get<any>(
-      `${this.apiUrl}/proveedor/get-proveedor/${idProvider}`
+      `${this.apiUrl}/proveedor/get-report/${idProvider}`
     );
   }
 }

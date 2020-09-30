@@ -1,35 +1,30 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
-import { AppRoutes } from "./app.routing";
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from "@angular/router";
+import { JwtModule } from "@auth0/angular-jwt";
+import { MsalModule } from "@azure/msal-angular";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ToastrModule } from "ngx-toastr";
+import { environment } from "../environments/environment";
 import { AppComponent } from "./app.component";
-
+import { AppRoutes } from "./app.routing";
+import { DemoMaterialModule } from "./demo-material-module";
 import { FullComponent } from "./layouts/full/full.component";
 import { AppHeaderComponent } from "./layouts/full/header/header.component";
 import { AppSidebarComponent } from "./layouts/full/sidebar/sidebar.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { DemoMaterialModule } from "./demo-material-module";
-
-import { SharedModule } from "./shared/shared.module";
-import { SpinnerComponent } from "./shared/spinner.component";
-import { environment } from "../environments/environment";
-
+import { MsalUserService } from "./services/active-directory/msaluser.service";
 // services
 import { ApiService } from "./services/api.service";
-import { DataShareService } from "./services/datashare.service";
-import { MsalUserService } from "./services/active-directory/msaluser.service";
 import { ApiDenariusService } from "./services/apidenarius.service";
+import { DataShareService } from "./services/datashare.service";
 import { NotificationService } from "./services/notification.service";
-import { ToastrModule } from "ngx-toastr";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { MsalModule } from "@azure/msal-angular";
-
-import { JwtModule } from "@auth0/angular-jwt";
-
-import { NgxSpinnerModule } from "ngx-spinner";
+import { SharedModule } from "./shared/shared.module";
+import { SpinnerComponent } from "./shared/spinner.component";
 
 export function tokenGetter() {
   return localStorage.getItem("token");

@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { ScriptService } from "./script.service";
+import { Component, OnInit } from "@angular/core";
+import { NgxSpinnerService } from "ngx-spinner";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { ReporteService } from "../../services/reporte/reporte.service";
+import { ScriptService } from "./script.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
-import { NgxSpinnerService } from "ngx-spinner";
 
 declare let pdfMake: any;
 
@@ -14,20 +14,26 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
-  allNameParameters: any[] = []; // son los nombres de los archivos json
-
   actividades = [];
 
   lstProveedoresActivos = [];
 
-  pesosPerfiles = {
-    empresarial: 10,
-    financiero: 20,
-    operativo: 30,
-    comercial: 40,
-    documental: 50,
-    total: 90,
-  };
+  ///////////
+  nombrerazonsocial: string;
+  nombrecomercial: string;
+
+  fechadecalificacion: string;
+
+  actividadeconomicaprincipal: string;
+  actividadeconomicasecundaria: string;
+
+  lstActividades: any[];
+
+  pesosPerfiles: any;
+
+  calificacion: string;
+  riesgo: string;
+  resultado: string;
 
   constructor(
     private reporteService: ReporteService,
@@ -39,8 +45,6 @@ export class ReporteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.allNameParameters.push("key"); // almacenamos las claves
-
     this.loadListaDeProveedoresActivos();
 
     this.actividades = [
@@ -81,15 +85,22 @@ export class ReporteComponent implements OnInit {
 
   generatePdf(id) {
     this.reporteService.getProveedor(id).subscribe(
-      async (lstProveedores) => {
-        console.log("llega lstProveedores", lstProveedores);
+      async (proveedor: ReporteDto) => {
+        console.log("llega proveedor", proveedor);
 
+        this.nombrerazonsocial = proveedor.nombrecomercial;
+        this.nombrecomercial = proveedor.nombrecomercial;
+        this.fechadecalificacion = proveedor.fechadecalificacion;
+        this.actividadeconomicaprincipal =
+          proveedor.actividadeconomicaprincipal;
+        this.actividadeconomicasecundaria =
+          proveedor.actividadeconomicasecundaria;
 
+        this.pesosPerfiles = proveedor.pesosPerfiles;
 
-
-        /* pdfMake.vfs = pdfFonts.pdfMake.vfs;
+        pdfMake.vfs = pdfFonts.pdfMake.vfs;
         const documentDefinition = this.getDocumentDefinition();
-        pdfMake.createPdf(documentDefinition).open(); */
+        pdfMake.createPdf(documentDefinition).open();
 
         this.spinner.hide();
       },
@@ -98,14 +109,12 @@ export class ReporteComponent implements OnInit {
         this.spinner.hide();
       }
     );
-
-
   }
 
   buildTableBody(data, columns) {
     const body = [];
 
-    body.push(["", "CATEGORIA", "Detalle del Bien / Servicio / Consultoría"]);
+    body.push(["", "CATEGORÍA", "Detalle del Bien / Servicio / Consultoría"]);
 
     data.forEach(function (row) {
       const dataRow = [];

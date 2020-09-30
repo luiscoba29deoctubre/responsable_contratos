@@ -205,7 +205,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "PUBLIESTRELLA",
+                      text: this.nombrerazonsocial,
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -218,7 +218,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "PUBLIESTRELLA",
+                      text: this.nombrecomercial,
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -231,7 +231,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "Sunday, September 13, 2020",
+                      text: this.fechadecalificacion,
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -244,7 +244,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text: "Venta de productos publicitarios",
+                      text: this.actividadeconomicaprincipal,
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -257,8 +257,7 @@ export class ReporteComponent implements OnInit {
                       alignment: "center",
                     },
                     {
-                      text:
-                        "Servicios comunicacionales, consultoría en comunicación",
+                      text: this.actividadeconomicasecundaria,
                       fontSize: 10,
                       alignment: "center",
                     },
@@ -457,15 +456,15 @@ export class ReporteComponent implements OnInit {
             {
               text:
                 "El puntaje total obtenido por el proveedor " +
-                "PUBLIESTRELLA" +
+                this.nombrerazonsocial +
                 " es de " +
-                "95%" +
-                " equivalente a una calificación" +
-                "EXCELENTE" +
-                ", lo cual indica que es un proveedor con" +
-                "RIESGO MÍNIMO" +
-                " para cumplir con los estándares y requerimientos internos, con lo cual" +
-                "PUEDE PRESTAR SERVICIOS O ENTREGAR BIENES" +
+                this.pesosPerfiles.total +
+                " equivalente a una calificación " +
+                this.calificacion +
+                ", lo cual indica que es un proveedor con " +
+                this.riesgo +
+                " para cumplir con los estándares y requerimientos internos, con lo cual " +
+                this.resultado +
                 " a la COOPERATIVA DE  AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA.",
               fontSize: 10,
               alignment: "justify",

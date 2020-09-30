@@ -14,8 +14,6 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
-  actividades = [];
-
   lstProveedoresActivos = [];
 
   ///////////
@@ -27,7 +25,7 @@ export class ReporteComponent implements OnInit {
   actividadeconomicaprincipal: string;
   actividadeconomicasecundaria: string;
 
-  lstActividades: any[];
+  lstActividades: any[] = [];
 
   pesosPerfiles: any;
 
@@ -47,7 +45,7 @@ export class ReporteComponent implements OnInit {
   ngOnInit(): void {
     this.loadListaDeProveedoresActivos();
 
-    this.actividades = [
+    this.lstActividades = [
       {
         vacio: "BIENES",
         categoria: "MARKETING",
@@ -273,7 +271,7 @@ export class ReporteComponent implements OnInit {
               margin: [0, 20, 0, 5],
             },
 
-            this.table(this.actividades, ["vacio", "categoria", "detalle"]),
+            this.table(this.lstActividades, ["vacio", "categoria", "detalle"]),
 
             {
               text:

@@ -5,6 +5,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { ReporteService } from "../../services/reporte/reporte.service";
 import { ScriptService } from "./script.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
+import { ListaActividadesResponsable } from '../../models/dtos/LstActividadDto';
 
 declare let pdfMake: any;
 
@@ -25,7 +26,7 @@ export class ReporteComponent implements OnInit {
   actividadeconomicaprincipal: string;
   actividadeconomicasecundaria: string;
 
-  lstActividades: any[] = [];
+  lstActividades: ListaActividadesResponsable[] = [];
 
   pesosPerfiles: any;
 
@@ -44,25 +45,6 @@ export class ReporteComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadListaDeProveedoresActivos();
-
-    this.lstActividades = [
-      {
-        vacio: "BIENES",
-        categoria: "MARKETING",
-        detalle: "MATERIAL PUBLICITARIO",
-      },
-      { vacio: "SERVICIOS", categoria: "SERVICIOS", detalle: "LAVANDERÍA" },
-      {
-        vacio: "OBRA CIVIL",
-        categoria: "cat de obra",
-        detalle: "det de cat de obra",
-      },
-      {
-        vacio: "CONSULTORÍA",
-        categoria: "cat de consult",
-        detalle: "det de cat consult",
-      },
-    ];
   }
 
   loadListaDeProveedoresActivos() {
@@ -93,7 +75,7 @@ export class ReporteComponent implements OnInit {
           proveedor.actividadeconomicaprincipal;
         this.actividadeconomicasecundaria =
           proveedor.actividadeconomicasecundaria;
-
+        this.lstActividades = proveedor.lstActividades;
         this.pesosPerfiles = proveedor.pesosPerfiles;
 
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -271,7 +253,11 @@ export class ReporteComponent implements OnInit {
               margin: [0, 20, 0, 5],
             },
 
-            this.table(this.lstActividades, ["vacio", "categoria", "detalle"]),
+            this.table(this.lstActividades, [
+              "actividad",
+              "categoria",
+              "catalogocategoria",
+            ]),
 
             {
               text:

@@ -2,7 +2,7 @@
   <h3 class="card-title" style="margin: 10px; text-align: center">
     FORMULARIO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES
   </h3>
-  <!-- <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()"> -->
+  <form [formGroup]="reporteForm" (ngSubmit)="onFormSubmit()">
     <div class="card-body">
       <div class="row mt-3">
         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -26,15 +26,75 @@
           </div>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="form-group">
-            <label for="fechaaperturaruc">Documentacion entregada </label>
+            <label for="fechaaperturaruc">Documentacion entregada
+            </label>
+
+  <!--           <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <input style="cursor: pointer; text-align: left" required type="text" placeholder="Escoge fecha"
+                    class="form-control" bsDatepicker #dp="bsDatepicker" [readonly]="true" name="fechaaperturaruc"
+                    [(ngModel)]="fechaaperturaruc" />
+                  <ng-container *ngIf="!fechaaperturaruc && empForm.submitted">
+                    <p class="alert alert-danger alert-dismissible">
+                      Este campo es requerido {{ fechaaperturaruc }}
+                    </p>
+                  </ng-container>
+                </div>
+              </div>
+            </div> -->
+
           </div>
         </div>
+      </div>
+
+<!--       <div class="row">
+        <div class="col">
+          <div class="border">
+            {{ subeDocumento.name }}
+            <angular-file-uploader [numberFileUpload]="subeDocumento.numero"
+              [allowedFiles]="subeDocumento.lstDocumentoPerfilDocumental" [resetUpload]="resetUpload"
+              [config]="setIdAfuConfig(subeDocumento.id)" (ApiResponse)="docUpload($event)">
+            </angular-file-uploader>
+            <ng-container *ngIf="
+                          subeDocumento.lstDocumentoPerfilDocumental.length <
+                            subeDocumento.numero && documentalForm.submitted
+                        ">
+              <p *ngIf="subeDocumento.numero == 1" class="alert alert-danger alert-dismissible">
+                Es un documento requerido
+              </p>
+              <p *ngIf="subeDocumento.numero > 1" class="alert alert-danger alert-dismissible">
+                Son {{ subeDocumento.numero }} documentos requeridos
+              </p>
+            </ng-container>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <input type="radio" value="completo" formControlName="gender" /> Completo
-          <input type="radio" value="incompleto" formControlName="gender" /> Incompleto
+          <label class="form-check-label">
+            <input
+              type="radio"
+              value="completo"
+              formControlName="documentacion"
+            />
+            Completo
+          </label>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label class="form-check-label">
+            <input
+              type="radio"
+              value="incompleto"
+              formControlName="documentacion"
+            />
+            Incompleto
+          </label>
         </div>
       </div>
 
@@ -60,5 +120,5 @@
         </div>
       </div>
     </div>
-  <!-- </form> -->
+  </form>
 </div>

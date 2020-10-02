@@ -5,7 +5,8 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { ReporteService } from "../../services/reporte/reporte.service";
 import { ScriptService } from "./script.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
-import { ListaActividadesResponsable } from '../../models/dtos/LstActividadDto';
+import { ListaActividadesResponsable } from "../../models/dtos/LstActividadDto";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 declare let pdfMake: any;
 
@@ -16,6 +17,8 @@ declare let pdfMake: any;
 })
 export class ReporteComponent implements OnInit {
   lstProveedoresActivos = [];
+
+  reporteForm: FormGroup;
 
   ///////////
   nombrerazonsocial: string;
@@ -35,16 +38,25 @@ export class ReporteComponent implements OnInit {
   resultado: string;
 
   constructor(
-    private reporteService: ReporteService,
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
     private scriptService: ScriptService,
-    private spinner: NgxSpinnerService
+    private reporteService: ReporteService
   ) {
     this.spinner.show();
     this.scriptService.load("pdfMake", "vfsFonts");
+
+    this.initForm();
   }
 
   ngOnInit(): void {
     this.loadListaDeProveedoresActivos();
+  }
+
+  private initForm() {
+    this.reporteForm = this.fb.group({
+      documentacion: [null, [Validators.required]],
+    });
   }
 
   loadListaDeProveedoresActivos() {
@@ -117,6 +129,10 @@ export class ReporteComponent implements OnInit {
         body: this.buildTableBody(data, columns),
       },
     };
+  }
+
+  onFormSubmit() {
+    console.log("entra en el formulario");
   }
 
   getDocumentDefinition() {
@@ -380,7 +396,7 @@ export class ReporteComponent implements OnInit {
                   ],
                   [
                     {
-                      text: "DOCUMENTACIÓN::",
+                      text: "DOCUMENTACIÓN:",
                       colSpan: 2,
                       fontSize: 9,
                       bold: true,
@@ -467,7 +483,7 @@ export class ReporteComponent implements OnInit {
             {
               text:
                 "Los resultados contenidos en el presente informe, se basan en la información y documentación legal, tributaria y financiera proporcionada por " +
-                "PUBLICIDAD ESTRELLA S.A." +
+               this.nombrecomercial+
                 " . El trabajo ha consistido en validar y analizar la información provista con el objeto de asignar al proveedor, una calificación, en función de los parámetros definidos por la COOPERATIVA DE AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA., y alineados a la normativa vigente (Resolución No. SEPS-1GT-1R-1GJ-2018-0279), para los Servicios Provistos por Terceros.",
               fontSize: 10,
               alignment: "justify",

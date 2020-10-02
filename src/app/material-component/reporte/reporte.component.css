@@ -1,28 +1,7 @@
-#caja {
-  width: 250px;
-  height: 100px;
-  border: 1px solid black;
-  margin-right: 15px;
-  margin-left: 25px;
+input {
+  border: 1px solid #ccc;
 }
 
-#cuadro {
-  border: 1px solid black;
-  margin-right: 5px;
-  margin-left: 5px;
-}
-
-#cuadro-negrita {
-  border: 2px solid black;
-  text-align: center;
-}
-
-#cuadro2 {
-  border: 1px solid black;
-  text-align: center;
-}
-
-#fila {
-  margin-top: 3px;
-  margin-bottom: 3px;
+table > tr> th{
+background-color: red;
 }

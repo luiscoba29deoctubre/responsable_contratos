@@ -12,7 +12,13 @@ export class ReporteService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  public getProveedores(): Observable<any> {
-    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedor/proveedores`);
+  public getProveedoresActivos(): Observable<any> {
+    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedor/prov-activos`);
+  }
+
+  public getProveedor(idProvider: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/proveedor/get-report/${idProvider}`
+    );
   }
 }

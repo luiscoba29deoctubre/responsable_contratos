@@ -1,11 +1,19 @@
-
 export class ReporteDto {
   constructor(
-    public idtipoperfil?: number,
+    public nombrerazonsocial?: string,
+    public nombrecomercial?: string,
 
-    public fechaaperturaruc?: string,
+    public fechadecalificacion?: string,
+
     public actividadeconomicaprincipal?: string,
     public actividadeconomicasecundaria?: string,
-  ) { }
-}
 
+    public lstActividades?: any[],
+
+    public pesosPerfiles?: any,
+
+    public calificacion?: string,
+    public riesgo?: string,
+    public resultado?: string
+  ) {}
+}

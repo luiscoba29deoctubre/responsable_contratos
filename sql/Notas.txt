@@ -1,0 +1,21 @@
+Migracion base SLQServer
+creacion de script
+carga de iconos
+camboio de servidor
+
+comandos
+ng serve --´port 4000 --0 levantar ambiente
+
+git 
+
+git checkout Pancho //cambio de rama
+
+git status //estado
+
+guardar mis cambios para pasar a master
+
+git checkout master
+
+subir mis cambios a master
+
+git merge Pancho

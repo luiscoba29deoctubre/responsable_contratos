@@ -30,50 +30,10 @@
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
           <div class="form-group">
-            <label for="fechaaperturaruc">Documentacion entregada
-            </label>
-
-  <!--           <div class="container">
-              <div class="row">
-                <div class="col-xs-12">
-                  <input style="cursor: pointer; text-align: left" required type="text" placeholder="Escoge fecha"
-                    class="form-control" bsDatepicker #dp="bsDatepicker" [readonly]="true" name="fechaaperturaruc"
-                    [(ngModel)]="fechaaperturaruc" />
-                  <ng-container *ngIf="!fechaaperturaruc && empForm.submitted">
-                    <p class="alert alert-danger alert-dismissible">
-                      Este campo es requerido {{ fechaaperturaruc }}
-                    </p>
-                  </ng-container>
-                </div>
-              </div>
-            </div> -->
-
+            <label for="fechaaperturaruc">Documentacion entregada </label>
           </div>
         </div>
       </div>
-
-<!--       <div class="row">
-        <div class="col">
-          <div class="border">
-            {{ subeDocumento.name }}
-            <angular-file-uploader [numberFileUpload]="subeDocumento.numero"
-              [allowedFiles]="subeDocumento.lstDocumentoPerfilDocumental" [resetUpload]="resetUpload"
-              [config]="setIdAfuConfig(subeDocumento.id)" (ApiResponse)="docUpload($event)">
-            </angular-file-uploader>
-            <ng-container *ngIf="
-                          subeDocumento.lstDocumentoPerfilDocumental.length <
-                            subeDocumento.numero && documentalForm.submitted
-                        ">
-              <p *ngIf="subeDocumento.numero == 1" class="alert alert-danger alert-dismissible">
-                Es un documento requerido
-              </p>
-              <p *ngIf="subeDocumento.numero > 1" class="alert alert-danger alert-dismissible">
-                Son {{ subeDocumento.numero }} documentos requeridos
-              </p>
-            </ng-container>
-          </div>
-        </div>
-      </div> -->
 
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -95,6 +55,24 @@
             />
             Incompleto
           </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="border">
+            <h4>Example-1 (Default Theme)</h4>
+            <angular-file-uploader
+              [numberFileUpload]="3"
+              [allowedFiles]="lista"
+              [resetUpload]="resetUpload"
+              [config]="setIdAfuConfig(2)"
+              (ApiResponse)="docUpload($event)"
+            >
+            </angular-file-uploader>
+          </div>
+          <br />
+          <br />
         </div>
       </div>
 

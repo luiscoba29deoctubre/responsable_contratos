@@ -53,7 +53,9 @@
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
           <div class="form-group">
-            <label for="fechaaperturaruc">Documentacion entregada </label>
+            <label for="documentacionEntregada"
+              >Documentación entregada:
+            </label>
           </div>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-9">
@@ -61,19 +63,28 @@
             <input
               type="radio"
               value="completo"
-              formControlName="documentacion"
+              formControlName="documentacionEntregada"
             />
             Completo
           </label>
-
           <label style="margin-left: 70px" class="form-check-label">
             <input
               type="radio"
               value="incompleto"
-              formControlName="documentacion"
+              formControlName="documentacionEntregada"
             />
             Incompleto
           </label>
+          <ng-container
+            *ngIf="
+              !reporteForm.get('documentacionEntregada').valid &&
+              reportForm.submitted
+            "
+          >
+            <p class="alert alert-danger alert-dismissible">
+              Este campo es requerido
+            </p>
+          </ng-container>
         </div>
       </div>
       <div class="row">
@@ -131,6 +142,42 @@
           </div>
         </div>
         <div></div>
+      </div>
+
+      <div class="row">
+        <div class="col tablaLista">
+          <mat-card>
+            <h5 class="titulos">Lista de aspirantes a proveedores</h5>
+            <mat-nav-list class="my-table mat-elevation-z8">
+              <ng-container
+                *ngFor="let proveedor of lstProveedoresActivos"
+                class="puntero"
+              >
+                <a
+                  (click)="generatePdf(proveedor.id)"
+                  mat-list-item
+                  href="javascript:void(0)"
+                >
+                  {{ proveedor.razonsocial }}
+                </a>
+              </ng-container>
+            </mat-nav-list>
+          </mat-card>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+          <div class="shadow-sm card action-buttons">
+            <button
+              (click)="reportForm.valid ? generatePdf('open') : ''"
+              class="btn btn-primary d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons"> picture_as_pdf </i>
+              <span>Calificar</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </form>

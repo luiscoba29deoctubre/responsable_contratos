@@ -5,6 +5,14 @@
   </h1>
 
   <div mat-dialog-content>
+    <mat-form-field appearance="fill" *ngIf="action == 'Agregar'">
+      <mat-label>Seleccione parametro padre</mat-label>
+      <mat-select [(ngModel)]="local_data.padre" name="padre">
+        <mat-option *ngFor="let padre of father" [value]="padre.value">
+          {{ padre.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-form-field *ngIf="action != 'Eliminar'">
       <input
         style="text-align: center"

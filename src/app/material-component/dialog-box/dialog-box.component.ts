@@ -2,6 +2,11 @@ import { Component, Inject, Optional } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Parameter } from "../../models/parameter";
 
+interface Father {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: "app-dialog-box",
   templateUrl: "./dialog-box.component.html",
@@ -9,7 +14,14 @@ import { Parameter } from "../../models/parameter";
 })
 export class DialogBoxComponent {
   action: string;
+  padre: string;
   local_data: any;
+
+  father: Father[] = [
+    { value: "100", viewValue: "Steak" },
+    { value: "2", viewValue: "Pizza" },
+    { value: "3", viewValue: "Tacos" },
+  ];
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
@@ -18,6 +30,7 @@ export class DialogBoxComponent {
   ) {
     this.local_data = { ...data };
     this.action = this.local_data.action;
+    this.padre = this.local_data.padre;
   }
 
   doAction() {

@@ -89,7 +89,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <label for="notaBuro">
+          <label for="documentoBuro">
             <strong>Documento del buró de crédito</strong>
           </label>
           <angular-file-uploader
@@ -115,6 +115,8 @@
               class="form-control"
               placeholder="Nota del buró"
               id="notaBuro"
+              min="0"
+              max="30"
             />
             <ng-container
               *ngIf="!reporteForm.get('notaBuro').valid && reportForm.submitted"

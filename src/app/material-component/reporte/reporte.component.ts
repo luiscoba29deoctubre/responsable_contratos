@@ -133,7 +133,7 @@ export class ReporteComponent implements OnInit {
 
   generatePdf() {
     console.log("llega el id", this.proveedorSeleccionado);
-    /* this.reporteService.getProveedor(id).subscribe(
+    this.reporteService.getProveedor(this.proveedorSeleccionado.id).subscribe(
       async (proveedor: ReporteDto) => {
         console.log("llega proveedor", proveedor);
 
@@ -159,7 +159,7 @@ export class ReporteComponent implements OnInit {
         console.log("aqui error hay ", error);
         this.spinner.hide();
       }
-    ); */
+    );
   }
 
   buildTableBody(data, columns) {

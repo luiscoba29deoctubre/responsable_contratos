@@ -12,6 +12,12 @@ export class ReporteDto {
 
     public pesosPerfiles?: any,
 
+    public calificacion?: Calificacion
+  ) {}
+}
+
+export class Calificacion {
+  constructor(
     public calificacion?: string,
     public riesgo?: string,
     public resultado?: string

@@ -7,6 +7,7 @@ import { ScriptService } from "./script.service";
 import { ReporteDto } from "../../models/dtos/ReporteDto";
 import { ListaActividadesResponsable } from "../../models/dtos/LstActividadDto";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ParamDocumentoPerfilDocumental } from "../../models/parameters";
 
 declare let pdfMake: any;
 
@@ -16,6 +17,14 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
+  private apiUrl = "http://localhost:3003/responsable-api/v1"; // URL to web api del servidor
+
+  url_api_upload_buro = "/reporte/upload_buro";
+
+  lista: ParamDocumentoPerfilDocumental[] = [];
+
+  resetUpload: boolean;
+
   lstProveedoresActivos = [];
 
   reporteForm: FormGroup;
@@ -56,7 +65,45 @@ export class ReporteComponent implements OnInit {
   private initForm() {
     this.reporteForm = this.fb.group({
       documentacion: [null, [Validators.required]],
+      notaBuro: [null, [Validators.required]],
     });
+  }
+
+  setIdAfuConfig = (idDocumento: number) => {
+    return {
+      multiple: true,
+      formatsAllowed: ".pdf",
+      maxSize: "2", // MB
+      uploadAPI: {
+        url: this.apiUrl + this.url_api_upload_buro,
+        method: "POST",
+        headers: {
+          auth: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+        params: {
+          idDocumento: idDocumento,
+        },
+        responseType: "blob",
+      },
+
+      hideProgressBar: false,
+      hideResetBtn: false,
+      hideSelectBtn: false,
+      fileNameIndex: true,
+      replaceTexts: {
+        selectFileBtn: "Seleccionar archivos",
+        resetBtn: "Quitar archivos",
+        uploadBtn: "Subir archivos",
+        afterUploadMsg_success: "Carga exitosa !",
+        afterUploadMsg_error: "Error al intentar subir archivos !",
+        sizeLimit: "Tamaño máximo",
+      },
+    };
+  };
+
+  docUpload(env) {
+    // console.log("entraaaaaaa", env);
+    return true;
   }
 
   loadListaDeProveedoresActivos() {
@@ -483,7 +530,7 @@ export class ReporteComponent implements OnInit {
             {
               text:
                 "Los resultados contenidos en el presente informe, se basan en la información y documentación legal, tributaria y financiera proporcionada por " +
-               this.nombrecomercial+
+                this.nombrecomercial +
                 " . El trabajo ha consistido en validar y analizar la información provista con el objeto de asignar al proveedor, una calificación, en función de los parámetros definidos por la COOPERATIVA DE AHORRO Y CRÉDITO 29 DE OCTUBRE LTDA., y alineados a la normativa vigente (Resolución No. SEPS-1GT-1R-1GJ-2018-0279), para los Servicios Provistos por Terceros.",
               fontSize: 10,
               alignment: "justify",

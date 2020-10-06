@@ -2,6 +2,10 @@ input {
   border: 1px solid #ccc;
 }
 
+textarea {
+  border: 1px solid #ccc;
+}
+
 table > tr > th {
   background-color: red;
 }

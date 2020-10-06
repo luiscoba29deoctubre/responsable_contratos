@@ -86,79 +86,115 @@
           </ng-container>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-          <label for="documentoBuro">
-            <strong>Documento del buró de crédito</strong>
-          </label>
-          <angular-file-uploader
-            [numberFileUpload]="3"
-            [allowedFiles]="lista"
-            [resetUpload]="resetUpload"
-            [config]="setIdAfuConfig(2)"
-            (ApiResponse)="docUpload($event)"
-          >
-          </angular-file-uploader>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
-          <div class="form-group">
-            <label for="notaBuro">
-              <strong> Nota del buró: </strong>
+      <ng-container
+        *ngIf="reporteForm.get('documentacionEntregada').value === 'completo'"
+        ><div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <label for="documentoBuro">
+              <strong>Documento del buró de crédito</strong>
             </label>
-            <input
-              formControlName="notaBuro"
-              type="number"
-              class="form-control"
-              placeholder="Nota del buró"
-              id="notaBuro"
-              min="0"
-              max="30"
-            />
-            <ng-container
-              *ngIf="!reporteForm.get('notaBuro').valid && reportForm.submitted"
+            <angular-file-uploader
+              [numberFileUpload]="3"
+              [allowedFiles]="lista"
+              [resetUpload]="resetUpload"
+              [config]="setIdAfuConfig(2)"
+              (ApiResponse)="docUpload($event)"
             >
-              <p class="alert alert-danger alert-dismissible">
-                Este campo es requerido
-              </p>
-            </ng-container>
+            </angular-file-uploader>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-          <div class="form-group">
-            <label for="observaciones">
-              <strong>Observaciones: </strong>
-            </label>
-            <div class="input-group border">
-              <textarea
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+            <div class="form-group">
+              <label for="notaBuro">
+                <strong> Nota del buró: </strong>
+              </label>
+              <input
+                formControlName="notaBuro"
+                type="number"
                 class="form-control"
-                aria-label="With textarea"
-              ></textarea>
+                placeholder="Nota del buró"
+                id="notaBuro"
+                min="0"
+                max="30"
+              />
+              <ng-container
+                *ngIf="
+                  !reporteForm.get('notaBuro').valid && reportForm.submitted
+                "
+              >
+                <p class="alert alert-danger alert-dismissible">
+                  Este campo es requerido
+                </p>
+              </ng-container>
             </div>
           </div>
         </div>
-        <div></div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <div class="shadow-sm card action-buttons">
-            <button
-              type="submit"
-              (click)="reportForm.valid ? generatePdf() : ''"
-              class="btn btn-primary d-flex align-items-center justify-content-center"
-            >
-              <i class="material-icons"> picture_as_pdf </i>
-              <span>Calificar</span>
-            </button>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+              <label for="observaciones">
+                <strong>Observaciones: </strong>
+              </label>
+              <div class="input-group border">
+                <textarea
+                  class="form-control"
+                  aria-label="With textarea"
+                ></textarea>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="shadow-sm card action-buttons">
+              <button
+                type="submit"
+                (click)="reportForm.valid ? generatePdf() : ''"
+                class="btn btn-primary d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons"> picture_as_pdf </i>
+                <span>Calificar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container
+        *ngIf="reporteForm.get('documentacionEntregada').value === 'incompleto'"
+      >
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+              <label for="notificar">
+                <strong>Notificar a proveedor </strong>
+              </label>
+              <div class="input-group border">
+                <textarea
+                  class="form-control"
+                  aria-label="With textarea"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="shadow-sm card action-buttons">
+              <button
+                class="btn btn-primary d-flex align-items-center justify-content-center"
+              >
+                <i class="material-icons"> email </i>
+                <span> *Notificar al Aspirante</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </form>
 </div>

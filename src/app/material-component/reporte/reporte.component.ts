@@ -64,7 +64,7 @@ export class ReporteComponent implements OnInit {
 
   private initForm() {
     this.reporteForm = this.fb.group({
-      documentacion: [null, [Validators.required]],
+      documentacionEntregada: [null, [Validators.required]],
       notaBuro: [null, [Validators.required]],
     });
   }
@@ -137,9 +137,11 @@ export class ReporteComponent implements OnInit {
         this.lstActividades = proveedor.lstActividades;
         this.pesosPerfiles = proveedor.pesosPerfiles;
 
+        // para crear el pdf
         pdfMake.vfs = pdfFonts.pdfMake.vfs;
         const documentDefinition = this.getDocumentDefinition();
         pdfMake.createPdf(documentDefinition).open();
+        // fin creacion de pdf
 
         this.spinner.hide();
       },

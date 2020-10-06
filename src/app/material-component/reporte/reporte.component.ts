@@ -25,7 +25,9 @@ export class ReporteComponent implements OnInit {
 
   resetUpload: boolean;
 
-  lstProveedoresActivos = [];
+  lstProveedoresSinCalificar = [];
+
+  proveedorSeleccionado;
 
   reporteForm: FormGroup;
 
@@ -60,10 +62,13 @@ export class ReporteComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadListaDeProveedoresSinCalificar();
+
+    this.proveedorSeleccionado = null;
   }
 
   private initForm() {
     this.reporteForm = this.fb.group({
+      proveedor: [null],
       documentacionEntregada: [null, [Validators.required]],
       notaBuro: [null, [Validators.required]],
     });
@@ -111,7 +116,7 @@ export class ReporteComponent implements OnInit {
       async (lstProveedores) => {
         console.log("llega lstProveedores", lstProveedores);
 
-        this.lstProveedoresActivos = lstProveedores;
+        this.lstProveedoresSinCalificar = lstProveedores;
 
         this.spinner.hide();
       },
@@ -122,8 +127,13 @@ export class ReporteComponent implements OnInit {
     );
   }
 
-  generatePdf(id) {
-    this.reporteService.getProveedor(id).subscribe(
+  seteaProveedorSeleccionado(proveedor) {
+    this.proveedorSeleccionado = proveedor;
+  }
+
+  generatePdf() {
+    console.log("llega el id", this.proveedorSeleccionado);
+    /* this.reporteService.getProveedor(id).subscribe(
       async (proveedor: ReporteDto) => {
         console.log("llega proveedor", proveedor);
 
@@ -149,7 +159,7 @@ export class ReporteComponent implements OnInit {
         console.log("aqui error hay ", error);
         this.spinner.hide();
       }
-    );
+    ); */
   }
 
   buildTableBody(data, columns) {
@@ -178,10 +188,6 @@ export class ReporteComponent implements OnInit {
         body: this.buildTableBody(data, columns),
       },
     };
-  }
-
-  onFormSubmit() {
-    console.log("entra en el formulario");
   }
 
   getDocumentDefinition() {

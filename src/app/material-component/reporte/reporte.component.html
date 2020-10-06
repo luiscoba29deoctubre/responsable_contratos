@@ -2,25 +2,24 @@
   <h3 class="card-title" style="margin: 10px; text-align: center">
     FORMULARIO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES
   </h3>
-  <form
-    #reportForm="ngForm"
-    [formGroup]="reporteForm"
-    (ngSubmit)="onFormSubmit()"
-  >
+  <form #reportForm="ngForm" [formGroup]="reporteForm">
     <div class="card-body">
       <div class="row">
         <div class="col tablaLista">
           <mat-card>
-            <h5 class="titulos">Lista proveedores sin calificar</h5>
+            <h5 class="titulos">Lista de proveedores sin calificar</h5>
             <mat-nav-list class="my-table mat-elevation-z8">
               <ng-container
-                *ngFor="let proveedor of lstProveedoresActivos"
+                *ngFor="let proveedor of lstProveedoresSinCalificar"
                 class="puntero"
               >
                 <a
-                  (click)="generatePdf(proveedor.id)"
+                  formControlName="proveedor"
+                  class="form-control"
+                  ngDefaultControl
                   mat-list-item
                   href="javascript:void(0)"
+                  (click)="seteaProveedorSeleccionado(proveedor)"
                 >
                   {{ proveedor.razonsocial }}
                 </a>
@@ -89,7 +88,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <label for="notaBuro">
+          <label for="documentoBuro">
             <strong>Documento del buró de crédito</strong>
           </label>
           <angular-file-uploader
@@ -115,6 +114,8 @@
               class="form-control"
               placeholder="Nota del buró"
               id="notaBuro"
+              min="0"
+              max="30"
             />
             <ng-container
               *ngIf="!reporteForm.get('notaBuro').valid && reportForm.submitted"
@@ -145,32 +146,11 @@
       </div>
 
       <div class="row">
-        <div class="col tablaLista">
-          <mat-card>
-            <h5 class="titulos">Lista de aspirantes a proveedores</h5>
-            <mat-nav-list class="my-table mat-elevation-z8">
-              <ng-container
-                *ngFor="let proveedor of lstProveedoresActivos"
-                class="puntero"
-              >
-                <a
-                  (click)="generatePdf(proveedor.id)"
-                  mat-list-item
-                  href="javascript:void(0)"
-                >
-                  {{ proveedor.razonsocial }}
-                </a>
-              </ng-container>
-            </mat-nav-list>
-          </mat-card>
-        </div>
-      </div>
-
-      <div class="row">
         <div class="col-sm-3 col-md-3 col-lg-3">
           <div class="shadow-sm card action-buttons">
             <button
-              (click)="reportForm.valid ? generatePdf('open') : ''"
+              type="submit"
+              (click)="reportForm.valid ? generatePdf() : ''"
               class="btn btn-primary d-flex align-items-center justify-content-center"
             >
               <i class="material-icons"> picture_as_pdf </i>

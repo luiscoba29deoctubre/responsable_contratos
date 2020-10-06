@@ -2,41 +2,40 @@
   <h3 class="card-title" style="margin: 10px; text-align: center">
     FORMULARIO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES
   </h3>
-  <form [formGroup]="reporteForm" (ngSubmit)="onFormSubmit()">
+  <form
+    #reportForm="ngForm"
+    [formGroup]="reporteForm"
+    (ngSubmit)="onFormSubmit()"
+  >
     <div class="card-body">
       <div class="row mt-3">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-4 col-md-4 col-lg-4">
           <div class="form-group">
             <label style="margin-right: 20px">Código</label>
-            <input type="text" class="form-control" />
+            <label class="sombra" style="margin-right: 20px">123</label>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-4 col-md-4 col-lg-4">
           <label style="margin-right: 20px">Fecha pedido de calificación</label>
-          <input type="text" class="form-control" />
+          <label class="sombra" style="margin-right: 20px">2020/12/02</label>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-4 col-md-4 col-lg-4">
           <div class="form-group">
             <label style="margin-right: 20px"
               >Fecha recepción documentación</label
             >
-            <input type="text" class="form-control" />
+            <label class="sombra" style="margin-right: 20px">2020/10/12</label>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-4 col-lg-3">
           <div class="form-group">
             <label for="fechaaperturaruc">Documentacion entregada </label>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-8 col-lg-9">
           <label class="form-check-label">
             <input
               type="radio"
@@ -45,9 +44,8 @@
             />
             Completo
           </label>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
-          <label class="form-check-label">
+
+          <label style="margin-left: 70px" class="form-check-label">
             <input
               type="radio"
               value="incompleto"
@@ -57,23 +55,61 @@
           </label>
         </div>
       </div>
-
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-          <div class="border">
-            <h4>Example-1 (Default Theme)</h4>
-            <angular-file-uploader
-              [numberFileUpload]="3"
-              [allowedFiles]="lista"
-              [resetUpload]="resetUpload"
-              [config]="setIdAfuConfig(2)"
-              (ApiResponse)="docUpload($event)"
-            >
-            </angular-file-uploader>
-          </div>
-          <br />
-          <br />
+          <label for="notaBuro">
+            <strong>Documento del buró de crédito</strong>
+          </label>
+          <angular-file-uploader
+            [numberFileUpload]="3"
+            [allowedFiles]="lista"
+            [resetUpload]="resetUpload"
+            [config]="setIdAfuConfig(2)"
+            (ApiResponse)="docUpload($event)"
+          >
+          </angular-file-uploader>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+          <div class="form-group">
+            <label for="notaBuro">
+              <strong> Nota del buró: </strong>
+            </label>
+            <input
+              formControlName="notaBuro"
+              type="number"
+              class="form-control"
+              placeholder="Nota del buró"
+              id="notaBuro"
+            />
+            <ng-container
+              *ngIf="!reporteForm.get('notaBuro').valid && reportForm.submitted"
+            >
+              <p class="alert alert-danger alert-dismissible">
+                Este campo es requerido
+              </p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="form-group">
+            <label for="observaciones">
+              <strong>Observaciones: </strong>
+            </label>
+            <div class="input-group border">
+              <textarea
+                class="form-control"
+                aria-label="With textarea"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div></div>
       </div>
 
       <div class="row">

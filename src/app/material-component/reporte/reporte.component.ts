@@ -65,6 +65,7 @@ export class ReporteComponent implements OnInit {
   private initForm() {
     this.reporteForm = this.fb.group({
       documentacion: [null, [Validators.required]],
+      notaBuro: [null, [Validators.required]],
     });
   }
 
@@ -76,6 +77,9 @@ export class ReporteComponent implements OnInit {
       uploadAPI: {
         url: this.apiUrl + this.url_api_upload_buro,
         method: "POST",
+        headers: {
+          auth: `Bearer ${sessionStorage.getItem("token")}`,
+        },
         params: {
           idDocumento: idDocumento,
         },

@@ -42,10 +42,9 @@
 .dragNDropBtmPad {
   padding-bottom: 2rem;
 }
-/* .afu-upload-status {
-  padding: 0;
-  margin: 0;
-} */
+.afu-upload {
+  margin-right: 60px;
+}
 /*--------------------- X-X-X-X ----------------------*/
 @media screen and (max-width: 620px) {
   .caption {

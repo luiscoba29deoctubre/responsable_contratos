@@ -59,7 +59,7 @@ export class ReporteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadListaDeProveedoresActivos();
+    this.loadListaDeProveedoresSinCalificar();
   }
 
   private initForm() {
@@ -106,8 +106,8 @@ export class ReporteComponent implements OnInit {
     return true;
   }
 
-  loadListaDeProveedoresActivos() {
-    this.reporteService.getProveedoresActivos().subscribe(
+  loadListaDeProveedoresSinCalificar() {
+    this.reporteService.getProveedoresSinCalificar().subscribe(
       async (lstProveedores) => {
         console.log("llega lstProveedores", lstProveedores);
 

@@ -12,8 +12,8 @@ export class ReporteService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  public getProveedoresActivos(): Observable<any> {
-    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedor/prov-activos`);
+  public getProveedoresSinCalificar(): Observable<any> {
+    return this.http.get<ReporteDto>(`${this.apiUrl}/proveedor/prov-sin-calificar`);
   }
 
   public getProveedor(idProvider: number): Observable<any> {

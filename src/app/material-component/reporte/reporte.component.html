@@ -2,6 +2,59 @@
   <h3 class="card-title" style="margin: 10px; text-align: center">
     FORMULARIO DE REGISTRO Y CALIFICACIÓN DE PROVEEDORES
   </h3>
+
+  <mat-table
+    matTableFilter
+    [exampleEntity]="filterEntity"
+    [filterType]="filterType"
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Name" [(ngModel)]="filterEntity.name" />
+        </mat-form-field>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="captainName">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            placeholder="Captain Name"
+            [(ngModel)]="filterEntity.captain.name"
+          />
+        </mat-form-field>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.captain.name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="captainSurname">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            placeholder="Captain Surname"
+            [(ngModel)]="filterEntity.captain.surname"
+          />
+        </mat-form-field>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.captain.surname }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
   <form #reportForm="ngForm" [formGroup]="reporteForm">
     <div class="card-body">
       <div class="row">
@@ -103,9 +156,7 @@
             >
             </angular-file-uploader>
           </div>
-        </div>
 
-        <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
             <div class="form-group">
               <label for="notaBuro">

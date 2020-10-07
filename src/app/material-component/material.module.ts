@@ -18,7 +18,8 @@ import { DialogExitComponent } from "./dialog-exit/dialog-exit.component";
 import { DialogAcceptComponent } from "./dialog-accept/dialog-accept.component";
 import { ReporteComponent } from "./reporte/reporte.component";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { AngularFileUploaderModule } from './reporte/angular-file-uploader/src/lib/angular-file-uploader.module';
+import { AngularFileUploaderModule } from "./reporte/angular-file-uploader/src/lib/angular-file-uploader.module";
+import { MatTableFilterModule } from "mat-table-filter";
 
 @NgModule({
   imports: [
@@ -32,6 +33,8 @@ import { AngularFileUploaderModule } from './reporte/angular-file-uploader/src/l
     CdkTableModule,
 
     AngularFileUploaderModule,
+
+    MatTableFilterModule,
   ],
   providers: [],
   entryComponents: [],

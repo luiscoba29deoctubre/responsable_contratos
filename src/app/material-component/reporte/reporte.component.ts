@@ -8,6 +8,42 @@ import { ReporteDto } from "../../models/dtos/ReporteDto";
 import { ListaActividadesResponsable } from "../../models/dtos/LstActividadDto";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ParamDocumentoPerfilDocumental } from "../../models/parameters";
+import { MatTableDataSource } from "@angular/material";
+import { MatTableFilter } from "mat-table-filter";
+
+export class Captain {
+  name: string;
+  surname: string;
+}
+
+export class SpaceCraft {
+  name: string;
+  isConstitutionClass: boolean;
+  captain: Captain;
+}
+
+const SPACECRAFT_DATA: SpaceCraft[] = [
+  {
+    name: "Endurance",
+    isConstitutionClass: false,
+    captain: { name: "Joseph", surname: "Cooper" },
+  },
+  {
+    name: "Enterprise",
+    isConstitutionClass: false,
+    captain: { name: "Christopher", surname: "Pike" },
+  },
+  {
+    name: "Discovery",
+    isConstitutionClass: false,
+    captain: { name: "Christopher", surname: "Pike" },
+  },
+  {
+    name: "Enterprise",
+    isConstitutionClass: false,
+    captain: { name: "Jean-Luc", surname: "Pickard" },
+  },
+];
 
 declare let pdfMake: any;
 
@@ -17,6 +53,11 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
+  filterEntity: SpaceCraft;
+  filterType: MatTableFilter;
+  displayedColumns: string[] = ["name", "captainName", "captainSurname"];
+  dataSource;
+  /////////////////////
   private apiUrl = "http://localhost:3003/responsable-api/v1"; // URL to web api del servidor
 
   url_api_upload_buro = "/reporte/upload_buro";
@@ -64,6 +105,12 @@ export class ReporteComponent implements OnInit {
     this.loadListaDeProveedoresSinCalificar();
 
     this.proveedorSeleccionado = null;
+
+    // Do not forget to initialize your object and it's non-primitive properties
+    this.filterEntity = new SpaceCraft();
+    this.filterEntity.captain = new Captain();
+    this.filterType = MatTableFilter.ANYWHERE;
+    this.dataSource = new MatTableDataSource(SPACECRAFT_DATA);
   }
 
   private initForm() {

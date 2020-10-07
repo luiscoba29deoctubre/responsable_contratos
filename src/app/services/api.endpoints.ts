@@ -21,4 +21,6 @@ export class ApiEndpoints {
     this.url_api + "/proveedor/prov-sin-calificar";
 
   url_api_get_proveedor: string = this.url_api + "/proveedor/calificar/";
+
+  url_api_get_prov_fechas: string = this.url_api + "/proveedor/fechas/";
 }

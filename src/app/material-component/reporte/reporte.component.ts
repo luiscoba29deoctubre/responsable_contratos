@@ -1,3 +1,4 @@
+import { IdentificacionDto } from "./../../models/dtos/IdentificacionDto";
 import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
 import pdfMake from "pdfmake/build/pdfmake";
@@ -11,6 +12,7 @@ import { ParamDocumentoPerfilDocumental } from "../../models/parameters";
 import { MatTableDataSource } from "@angular/material";
 import { MatTableFilter } from "mat-table-filter";
 import { ApiEndpoints } from "../../services/api.endpoints";
+import { ProveedorDto } from "../../models/dtos/ProveedorDto";
 
 export class Captain {
   name: string;
@@ -23,26 +25,22 @@ export class SpaceCraft {
   captain: Captain;
 }
 
-const SPACECRAFT_DATA: SpaceCraft[] = [
+const SPACECRAFT_DATA: ProveedorDto[] = [
   {
-    name: "Endurance",
-    isConstitutionClass: false,
-    captain: { name: "Joseph", surname: "Cooper" },
+    idproveedor: 22,
+    identificacionDto: {
+      ruc: 155,
+      nombrecomercial: "Cooper",
+      nombrerazonsocial: "Koopa",
+    },
   },
   {
-    name: "Enterprise",
-    isConstitutionClass: false,
-    captain: { name: "Christopher", surname: "Pike" },
-  },
-  {
-    name: "Discovery",
-    isConstitutionClass: false,
-    captain: { name: "Christopher", surname: "Pike" },
-  },
-  {
-    name: "Enterprise",
-    isConstitutionClass: false,
-    captain: { name: "Jean-Luc", surname: "Pickard" },
+    idproveedor: 11,
+    identificacionDto: {
+      ruc: 122,
+      nombrecomercial: "Blue",
+      nombrerazonsocial: "Mary",
+    },
   },
 ];
 
@@ -54,9 +52,13 @@ declare let pdfMake: any;
   styleUrls: ["./reporte.component.css"],
 })
 export class ReporteComponent implements OnInit {
-  filterEntity: SpaceCraft;
+  filterEntity: ProveedorDto;
   filterType: MatTableFilter;
-  displayedColumns: string[] = ["name", "captainName", "captainSurname"];
+  displayedColumns: string[] = [
+    "nombrerazonsocial",
+    "idproveedor",
+    "captainSurname",
+  ];
   dataSource;
   /////////////////////
 
@@ -106,8 +108,8 @@ export class ReporteComponent implements OnInit {
     this.proveedorSeleccionado = null;
 
     // Do not forget to initialize your object and it's non-primitive properties
-    this.filterEntity = new SpaceCraft();
-    this.filterEntity.captain = new Captain();
+    this.filterEntity = new ProveedorDto();
+    this.filterEntity.identificacionDto = new IdentificacionDto();
     this.filterType = MatTableFilter.ANYWHERE;
     this.dataSource = new MatTableDataSource(SPACECRAFT_DATA);
   }
@@ -124,8 +126,6 @@ export class ReporteComponent implements OnInit {
   seteaFechas(name) {
     console.log("inicia el test", name);
     const idProveedor = 1;
-
-    
   }
 
   setIdAfuConfig = (idDocumento: number) => {

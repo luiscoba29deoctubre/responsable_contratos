@@ -10,32 +10,36 @@
     [dataSource]="dataSource"
     class="mat-elevation-z8"
   >
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="nombrerazonsocial">
       <mat-header-cell *matHeaderCellDef>
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Name" [(ngModel)]="filterEntity.name" />
+          <input
+            matInput
+            placeholder="Name"
+            [(ngModel)]="filterEntity.identificacionDto.nombrecomercial"
+          />
         </mat-form-field>
       </mat-header-cell>
       <mat-cell
         *matCellDef="let element"
         (click)="seteaFechas(element.captain.name)"
       >
-        {{ element.name }}
+        {{ element.identificacionDto.nombrecomercial }}
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="captainName">
+    <ng-container matColumnDef="idproveedor">
       <mat-header-cell *matHeaderCellDef>
         <mat-form-field appearance="outline">
           <input
             matInput
             placeholder="Captain Name"
-            [(ngModel)]="filterEntity.captain.name"
+            [(ngModel)]="filterEntity.identificacionDto.nombrerazonsocial"
           />
         </mat-form-field>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.captain.name }}
+        {{ element.identificacionDto.nombrerazonsocial }}
       </mat-cell>
     </ng-container>
 
@@ -45,12 +49,12 @@
           <input
             matInput
             placeholder="Captain Surname"
-            [(ngModel)]="filterEntity.captain.surname"
+            [(ngModel)]="filterEntity.identificacionDto.ruc"
           />
         </mat-form-field>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.captain.surname }}
+        {{ element.identificacionDto.ruc }}
       </mat-cell>
     </ng-container>
 

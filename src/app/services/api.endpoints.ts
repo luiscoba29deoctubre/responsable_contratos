@@ -15,18 +15,10 @@ export class ApiEndpoints {
   /** Url API */
   public url_api: string = this.url_base + this.api_version;
 
-  // Usuarios
-  public url_api_usuarios: string = this.url_api + "/users";
+  url_api_upload_buro: string = this.url_api + "/reporte/upload_buro";
 
-  // Procesos
-  public url_api_procesos: string = this.url_api + "/process";
+  url_api_prov_sin_calificar: string =
+    this.url_api + "/proveedor/prov-sin-calificar";
 
-  // Formulario
-  public url_api_formulario: string = this.url_api + "/form";
-
-  // proceso de obtencción de parametros
-  public url_api_get_parameters: string = this.url_api_procesos + "/get-param";
-
-  // Crear nuevo usuario
-  public url_api_new_user: string = this.url_api_usuarios + "/";
+  url_api_get_proveedor: string = this.url_api + "/proveedor/calificar/";
 }

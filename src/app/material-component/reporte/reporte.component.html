@@ -16,7 +16,10 @@
           <input matInput placeholder="Name" [(ngModel)]="filterEntity.name" />
         </mat-form-field>
       </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell
+        *matCellDef="let element"
+        (click)="seteaFechas(element.captain.name)"
+      >
         {{ element.name }}
       </mat-cell>
     </ng-container>

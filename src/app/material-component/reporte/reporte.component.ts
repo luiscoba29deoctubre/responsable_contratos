@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ParamDocumentoPerfilDocumental } from "../../models/parameters";
 import { MatTableDataSource } from "@angular/material";
 import { MatTableFilter } from "mat-table-filter";
+import { ApiEndpoints } from "../../services/api.endpoints";
 
 export class Captain {
   name: string;
@@ -58,9 +59,6 @@ export class ReporteComponent implements OnInit {
   displayedColumns: string[] = ["name", "captainName", "captainSurname"];
   dataSource;
   /////////////////////
-  private apiUrl = "http://localhost:3003/responsable-api/v1"; // URL to web api del servidor
-
-  url_api_upload_buro = "/reporte/upload_buro";
 
   lista: ParamDocumentoPerfilDocumental[] = [];
 
@@ -91,6 +89,7 @@ export class ReporteComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private endpoints: ApiEndpoints,
     private spinner: NgxSpinnerService,
     private scriptService: ScriptService,
     private reporteService: ReporteService
@@ -122,13 +121,20 @@ export class ReporteComponent implements OnInit {
     });
   }
 
+  seteaFechas(name) {
+    console.log("inicia el test", name);
+    const idProveedor = 1;
+
+    
+  }
+
   setIdAfuConfig = (idDocumento: number) => {
     return {
       multiple: true,
       formatsAllowed: ".pdf",
       maxSize: "2", // MB
       uploadAPI: {
-        url: this.apiUrl + this.url_api_upload_buro,
+        url: this.endpoints.url_api_upload_buro,
         method: "POST",
         headers: {
           auth: `Bearer ${sessionStorage.getItem("token")}`,
@@ -152,7 +158,7 @@ export class ReporteComponent implements OnInit {
         sizeLimit: "Tamaño máximo",
       },
     };
-  }
+  };
 
   docUpload(env) {
     // console.log("entraaaaaaa", env);
